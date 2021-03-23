@@ -11,6 +11,8 @@ public class shooting : MonoBehaviour
     
     public Rigidbody bullet;
     public Rigidbody bullet2;
+    public Rigidbody missile;
+    public Rigidbody cloud;
     public GameObject zap;
 
     
@@ -34,6 +36,18 @@ public class shooting : MonoBehaviour
         //if not moving forwards detach particle
         //zapClone.transform.parent = null;
     }
+    
+    void Fire4()
+    {
+        Rigidbody bulletClone = (Rigidbody)Instantiate(missile, transform.position, transform.rotation);
+        bulletClone.velocity = transform.forward * bulletSpeed/5;
+    }
+    
+    void Fire5()
+    {
+        Rigidbody bulletClone = (Rigidbody)Instantiate(cloud, transform.position, transform.rotation);
+        bulletClone.velocity = transform.forward * bulletSpeed/10;
+    }
 
     void Update()
     {
@@ -49,6 +63,14 @@ public class shooting : MonoBehaviour
         else if (Input.GetKeyDown("r"))
         {
             Fire3();
+        }
+        else if (Input.GetKeyDown("t"))
+        {
+            Fire4();
+        }
+        else if (Input.GetKeyDown("c"))
+        {
+            Fire5();
         }
     }
 }
