@@ -14,5 +14,11 @@ public class Health : MonoBehaviour
         health = maxhealth;
     }
 
-    
+    void FixedUpdate()
+    {
+        if (health<= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

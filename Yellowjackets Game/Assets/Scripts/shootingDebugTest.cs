@@ -53,12 +53,12 @@ public class shootingDebugTest : MonoBehaviour
     {
         if (Input.GetKeyDown("g"))
         {
-            Fire();
+            Fire2(); 
         }
 
         else if (Input.GetButton("Fire1"))
         {
-            Fire2();
+            Fire();
         }
         else if (Input.GetKeyDown("r"))
         {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4568887604911623108}
   - component: {fileID: 6147524448902368137}
   - component: {fileID: 6299596628326159551}
+  - component: {fileID: 7223822255900014788}
   m_Layer: 7
   m_Name: BombProjectile
   m_TagString: Untagged
@@ -93,7 +94,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4203060294229880325}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -114,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!96 &6147524448902368137
 TrailRenderer:
   serializedVersion: 2
@@ -226,4 +227,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTime: 4
+  particle: {fileID: 5814722455990227756, guid: fb7951cb7e9f16b43855deeb4c72633f, type: 3}
+--- !u!114 &7223822255900014788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203060294229880325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2eb7171d4cee24589bb188691a2c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 50
+  damageMod: 1
+  isEnemy: 0
   particle: {fileID: 5814722455990227756, guid: fb7951cb7e9f16b43855deeb4c72633f, type: 3}

@@ -16,6 +16,7 @@ public class shooting : MonoBehaviour
     public GameObject zap;
 
     public float AttackSpeed;
+    public float AttackSpeedBase;
     public float AttackSpeedMod = 0;
     private float elapsedTime = 0;
 
@@ -44,11 +45,22 @@ public class shooting : MonoBehaviour
             elapsedTime = Time.time + AttackSpeed;
         }
     }
+    
+    void missiles()
+    {
+        if (Time.time > elapsedTime)
+        {
+            Rigidbody bulletClone = (Rigidbody)Instantiate(missile, transform.position, transform.rotation);
+            bulletClone.velocity = transform.forward * 25;
+
+            elapsedTime = Time.time + AttackSpeed;
+        }
+    }
 
 
     void Update()
     {
-        AttackSpeed = 3 / (1 + (AttackSpeedMod / 100));
+        AttackSpeed = AttackSpeedBase / (1 + (AttackSpeedMod / 100));
 
 
 
@@ -56,12 +68,17 @@ public class shooting : MonoBehaviour
         {
             if(inventory.weapon == "default")
             {
-                
+                AttackSpeedBase = .5f;
                 defaultWeapon();
             }
             else if (inventory.weapon == "bomb")
             {
+                AttackSpeedBase = 2f;
                 bombs();
+            }else if (inventory.weapon == "missile")
+            {
+                AttackSpeedBase = 2f;
+                missiles();
             }
 
         }
