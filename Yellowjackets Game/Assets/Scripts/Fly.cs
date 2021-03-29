@@ -16,8 +16,7 @@ public class Fly : MonoBehaviour
     public Text Ytext;
     public Text Xtext;
     public Text Rolltext;
-    public float num = 0;
-    public float num2 = 0;
+    public float warpStrength = 0;
 
     // Use this for initialization
     void Start()
@@ -36,8 +35,8 @@ public class Fly : MonoBehaviour
         {
             isInside = false;
         }
-        
-        
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -45,7 +44,7 @@ public class Fly : MonoBehaviour
     {
         
         var em = warp.emission;
-        em.rateOverTime = num;
+        em.rateOverTime = warpStrength;
 
 
         if (Input.GetButton("Fire2") || isInside)
@@ -58,11 +57,11 @@ public class Fly : MonoBehaviour
             if (Input.GetKey("w"))
             {
                 transform.position += transform.forward * Time.deltaTime * boost;
-                num = 80;
+                warpStrength= 80;
             }
             else
             {
-                num = 0;
+                warpStrength = 0;
             }
             /*if (Input.GetKey("space"))
             {

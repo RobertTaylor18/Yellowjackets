@@ -23,8 +23,11 @@ public class Inventory : MonoBehaviour
         foreach(GameObject WeaponDrop in weapons) {
         if(WeaponDrop.name == weapon)
             {
-                Instantiate(WeaponDrop, transform.position, transform.rotation);
-                WeaponDrop.GetComponent<Rigidbody>().AddForce(transform.forward*10);
+                Rigidbody rb = (Rigidbody)Instantiate(WeaponDrop.GetComponent<Rigidbody>(), transform.position, Quaternion.identity);
+                rb.velocity = transform.up * 5;
+
+                
+                //WeaponDrop.GetComponent<Rigidbody>().velocity = transform.up*100;
             }
         }
     }

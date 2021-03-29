@@ -9,10 +9,17 @@ public class pause : MonoBehaviour
 
     public GameObject inGameUI;
     public GameObject pauseUI;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+
+        /*if (GameObject.Find("Player") == null)
+        {
+            Instantiate(player, transform.position, transform.rotation);
+        }*/
         
     }
 
