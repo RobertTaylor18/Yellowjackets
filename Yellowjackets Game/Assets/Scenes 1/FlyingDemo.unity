@@ -3848,9 +3848,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452264625}
   m_CullTransparentMesh: 1
---- !u!1 &1824417888 stripped
+--- !u!1 &1612046457 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -1317014427801224869, guid: c88ab2defefa409449183d0b2e0015b5, type: 3}
+  m_CorrespondingSourceObject: {fileID: -5050890621982195255, guid: c88ab2defefa409449183d0b2e0015b5, type: 3}
   m_PrefabInstance: {fileID: 1423174100}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866915776
@@ -4348,7 +4348,7 @@ MonoBehaviour:
   bulletSpeed: 30
   dist: 20
   bullet: {fileID: -158609835539901998, guid: c3519fa3e6bf7c544b491335410440ac, type: 3}
-  originPoint: {fileID: 1824417888}
+  originPoint: {fileID: 1612046457}
   player: {fileID: 1259083529}
 --- !u!1 &2010513314
 GameObject:
@@ -4457,6 +4457,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2078432258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c88ab2defefa409449183d0b2e0015b5, type: 3}
+  m_PrefabInstance: {fileID: 1423174100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2078432259
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078432258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7ffe51fd01038f4687a8606dad0dbed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6566340521691689499
 PrefabInstance:
   m_ObjectHideFlags: 0
