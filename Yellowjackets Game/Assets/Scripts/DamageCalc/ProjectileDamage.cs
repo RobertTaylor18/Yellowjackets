@@ -9,11 +9,12 @@ public class ProjectileDamage : MonoBehaviour
     public bool isEnemy;
     public ParticleSystem particle;
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy" && isEnemy == false)
         {
             other.gameObject.GetComponent<Health>().health -= baseDamage * damageMod;
+            other.gameObject.GetComponent<Health>().OnDamage();            
             Instantiate(particle, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

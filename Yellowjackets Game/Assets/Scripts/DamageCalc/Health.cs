@@ -11,12 +11,15 @@ public class Health : MonoBehaviour
     public Inventory inventory;
     public float moneyValue;
 
+    public GameObject FloatingTextPrefab;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         health = maxhealth;
-
-        inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+        player = GameObject.FindWithTag("Player");
+        inventory = player.GetComponent<Inventory>();
     }
 
     void FixedUpdate()
@@ -26,5 +29,12 @@ public class Health : MonoBehaviour
             inventory.money += moneyValue;
             Destroy(this.gameObject);
         }
+    }
+
+    public void OnDamage()
+    {
+        var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = health.ToString();
+        go.transform.LookAt(player.transform);
     }
 }

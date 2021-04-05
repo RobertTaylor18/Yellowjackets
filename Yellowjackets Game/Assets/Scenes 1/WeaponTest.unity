@@ -176,6 +176,8 @@ MonoBehaviour:
   maxhealth: 100
   inventory: {fileID: 4497922207027231604, guid: 0cd7731b423f56242b3af6e760898fe3, type: 3}
   moneyValue: 50
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!95 &313577098
 Animator:
   serializedVersion: 3
@@ -653,6 +655,7 @@ Transform:
   - {fileID: 2035234391}
   - {fileID: 313577096}
   - {fileID: 1648528779}
+  - {fileID: 1128285679}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1028,6 +1031,8 @@ MonoBehaviour:
   maxhealth: 500
   inventory: {fileID: 4497922207027231604, guid: 0cd7731b423f56242b3af6e760898fe3, type: 3}
   moneyValue: 300
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!1 &936883508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1310,8 @@ MonoBehaviour:
   maxhealth: 100
   inventory: {fileID: 4497922207027231604, guid: 0cd7731b423f56242b3af6e760898fe3, type: 3}
   moneyValue: 100
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!1 &1029720749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,12 +1800,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128285674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 49.41711, y: -33.470097, z: 0.99698234}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 815977101}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1128285680
 MonoBehaviour:
@@ -1862,6 +1869,8 @@ MonoBehaviour:
   maxhealth: 200
   inventory: {fileID: 0}
   moneyValue: 350
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!1 &1159645641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,6 +2633,8 @@ MonoBehaviour:
   maxhealth: 100
   inventory: {fileID: 4497922207027231604, guid: 0cd7731b423f56242b3af6e760898fe3, type: 3}
   moneyValue: 50
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!95 &1648528781
 Animator:
   serializedVersion: 3
@@ -3449,6 +3460,8 @@ MonoBehaviour:
   maxhealth: 100
   inventory: {fileID: 4497922207027231604, guid: 0cd7731b423f56242b3af6e760898fe3, type: 3}
   moneyValue: 50
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!95 &2035234394
 Animator:
   serializedVersion: 3
@@ -3852,6 +3865,8 @@ MonoBehaviour:
   maxhealth: 100
   inventory: {fileID: 4497922207027231604, guid: 0cd7731b423f56242b3af6e760898fe3, type: 3}
   moneyValue: 100
+  FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+  player: {fileID: 0}
 --- !u!1 &2136983939
 GameObject:
   m_ObjectHideFlags: 0
