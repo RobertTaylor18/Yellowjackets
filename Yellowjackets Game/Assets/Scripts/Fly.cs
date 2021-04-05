@@ -17,6 +17,7 @@ public class Fly : MonoBehaviour
     public Text Xtext;
     public Text Rolltext;
     public float warpStrength = 0;
+    public Vector3 groundPoint;
 
     // Use this for initialization
     void Start()
@@ -26,6 +27,10 @@ public class Fly : MonoBehaviour
 
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        
+        Ytext = GameObject.Find("Ysens").GetComponent<Text>();
+        Xtext = GameObject.Find("Xsens").GetComponent<Text>();
+        Rolltext = GameObject.Find("Rollsens").GetComponent<Text>();
 
         if (sceneName == "HiveShop")
         {
@@ -79,7 +84,10 @@ public class Fly : MonoBehaviour
                 transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("Horizontal") * Rollsensitivity);
             }
         }
-                sensitivity();
+        
+        //sensitivity();
+
+        GroundCheck();
             
     
 
@@ -87,14 +95,14 @@ public class Fly : MonoBehaviour
 
         
 
-        float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
+        /*float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
 
         if (terrainHeightWhereWeAre > transform.position.y)
         {
             transform.position = new Vector3(transform.position.x,
             terrainHeightWhereWeAre,
             transform.position.z);
-        }
+        }*/
     }
 
 
@@ -151,6 +159,20 @@ public class Fly : MonoBehaviour
         {
             Rollsensitivity -= 0.5f;
         }
+
+    }
+
+    public void GroundCheck()
+    {
+        RaycastHit hit;
+        int layerMask = 1 << 9;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
+        {
+            //Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
+            //Debug.Log("Did Hit");
+            groundPoint = hit.point;
+        }
+
 
     }
 }
