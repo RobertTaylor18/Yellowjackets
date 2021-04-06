@@ -178,6 +178,11 @@ MonoBehaviour:
   moneyValue: 50
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!95 &313577098
 Animator:
   serializedVersion: 3
@@ -1033,6 +1038,11 @@ MonoBehaviour:
   moneyValue: 300
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!1 &936883508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1322,11 @@ MonoBehaviour:
   moneyValue: 100
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!1 &1029720749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,6 +1886,11 @@ MonoBehaviour:
   moneyValue: 350
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!1 &1159645641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,6 +2655,11 @@ MonoBehaviour:
   moneyValue: 50
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!95 &1648528781
 Animator:
   serializedVersion: 3
@@ -3462,6 +3487,11 @@ MonoBehaviour:
   moneyValue: 50
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!95 &2035234394
 Animator:
   serializedVersion: 3
@@ -3867,6 +3897,11 @@ MonoBehaviour:
   moneyValue: 100
   FloatingTextPrefab: {fileID: 8472143815558536983, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
   player: {fileID: 0}
+  healthBarCanvas: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+  healthBarUI: {fileID: 0}
+  healthBarObj: {fileID: 0}
+  uiAlpha: 0
+  healthBar: {fileID: 0}
 --- !u!1 &2136983939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,3 +4018,116 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1001 &8262654102300368673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7414560768873138898, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491091279548929629, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491091279548929629, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370525955741854887, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_Name
+      value: HealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510496911075262991, guid: 620f9a8908721db478e11efa804b9665, type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 620f9a8908721db478e11efa804b9665, type: 3}
