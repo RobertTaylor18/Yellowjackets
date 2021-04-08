@@ -12,6 +12,7 @@ public class shooting : MonoBehaviour
     public Rigidbody bullet;
     public Rigidbody bullet2;
     public Rigidbody missile;
+    public Rigidbody shuriken;
     public Rigidbody cloud;
     public GameObject zap;
 
@@ -57,6 +58,17 @@ public class shooting : MonoBehaviour
         }
     }
 
+    void shurikens()
+    {
+        if (Time.time > elapsedTime)
+        {
+            Rigidbody bulletClone = (Rigidbody)Instantiate(shuriken, transform.position, transform.rotation);
+            bulletClone.velocity = transform.forward * 100;
+
+            elapsedTime = Time.time + AttackSpeed;
+        }
+    }
+
 
     void Update()
     {
@@ -75,10 +87,16 @@ public class shooting : MonoBehaviour
             {
                 AttackSpeedBase = 2f;
                 bombs();
-            }else if (inventory.weapon == "missile")
+            }
+            else if (inventory.weapon == "missile")
             {
                 AttackSpeedBase = 2f;
                 missiles();
+            }
+            else if (inventory.weapon == "shuriken")
+            {
+                AttackSpeedBase = .4f;
+                shurikens();
             }
 
         }

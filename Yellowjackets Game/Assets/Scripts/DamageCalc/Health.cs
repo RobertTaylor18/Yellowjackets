@@ -64,8 +64,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void OnDamage()
+    public void OnDamage(float damage)
     {
+        health -= damage;
         isFading = false;
         uiAlpha = 1;
 
@@ -78,7 +79,7 @@ public class Health : MonoBehaviour
         StopCoroutine(timer());
         StartCoroutine(timer());
         var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = health.ToString();
+        go.GetComponent<TextMesh>().text = damage.ToString();
         go.transform.LookAt(player.transform);
         go.transform.rotation = Quaternion.LookRotation(player.transform.forward);
 
