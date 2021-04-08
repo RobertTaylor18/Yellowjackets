@@ -182,6 +182,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!95 &313577098
 Animator:
@@ -1042,6 +1043,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!1 &936883508
 GameObject:
@@ -1326,6 +1328,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!1 &1029720749
 GameObject:
@@ -1890,6 +1893,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!1 &1159645641
 GameObject:
@@ -2659,6 +2663,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!95 &1648528781
 Animator:
@@ -3491,6 +3496,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!95 &2035234394
 Animator:
@@ -3901,6 +3907,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 0}
   healthBarObj: {fileID: 0}
   uiAlpha: 0
+  isFading: 0
   healthBar: {fileID: 0}
 --- !u!1 &2136983939
 GameObject:
@@ -4107,7 +4114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8088892424700396537, guid: 620f9a8908721db478e11efa804b9665, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

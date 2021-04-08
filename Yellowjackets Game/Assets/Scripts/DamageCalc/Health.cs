@@ -19,7 +19,8 @@ public class Health : MonoBehaviour
     public GameObject healthBarUI;
     public GameObject healthBarObj;
     public float uiAlpha = 0;
-    public bool isFading = false;
+    public bool isFading = true;
+    private IEnumerator coroutine;
     public Image healthBar;
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class Health : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         inventory = player.GetComponent<Inventory>();
         spawnHealthBar();
+        coroutine = timer();
     }
 
     void FixedUpdate()
@@ -51,21 +53,29 @@ public class Health : MonoBehaviour
         
         healthBarUI.GetComponent<CanvasGroup>().alpha = uiAlpha;
         healthBar.fillAmount = health / maxhealth;
-
-        if (isFading && uiAlpha >= 0)
+        if (isFading && uiAlpha > 0)
         {
-                uiAlpha -= Time.deltaTime;
+            uiAlpha -= Time.deltaTime;
+            
         }
-        else
+        else if(uiAlpha <= 0)
         {
             isFading = false;
         }
-        
     }
 
     public void OnDamage()
     {
+        isFading = false;
         uiAlpha = 1;
+
+        /*if (isFading)
+        {
+            isFading = false;
+           // StopCoroutine(coroutine);
+        }*/
+        //isFading = true;
+        StopCoroutine(timer());
         StartCoroutine(timer());
         var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
         go.GetComponent<TextMesh>().text = health.ToString();
@@ -87,10 +97,20 @@ public class Health : MonoBehaviour
         
     }
 
-    IEnumerator timer()
+    public IEnumerator timer()
     {
-        yield return new WaitForSeconds(3f);
-
+        isFading = false;
+        uiAlpha = 1;
+        yield return new WaitForSeconds(2f);
         isFading = true;
+
+
+        /*while (uiAlpha > 0)
+        {
+            uiAlpha -= .1f;
+            yield return new WaitForSeconds(1f);
+        }*/
+
+
     }
 }

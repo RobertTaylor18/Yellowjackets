@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: missile
+  desc: Homing explosive
   isWeapon: 1
   inventory: {fileID: 0}
   pickupAble: 0

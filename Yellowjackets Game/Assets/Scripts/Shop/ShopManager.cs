@@ -38,14 +38,15 @@ public class ShopManager : MonoBehaviour
         int i = 0;
         foreach (Transform position in positions)
         {
-            
-            GameObject existingItem = position.GetChild(0).gameObject;
-            Destroy(existingItem);
+            if (position.childCount != 0) {
+                GameObject existingItem = position.GetChild(0).gameObject;
+                Destroy(existingItem);
+            }
 
             GameObject MyItem = allShopItems[Random.Range(0, allShopItems.Length)];
             Instantiate(MyItem, position);
             MyItem.transform.position = Vector3.zero;
-            textBoxes[i].text = MyItem.transform.name;
+            textBoxes[i].text = "<b>"+MyItem.transform.name+"</b>\n" + MyItem.GetComponent<pickup>().desc.ToString();
             priceBoxes[i].text = MyItem.GetComponent<pickup>().cost.ToString();
             i++;
         }

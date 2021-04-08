@@ -5,6 +5,7 @@ using UnityEngine;
 public class pickup : MonoBehaviour
 {
     public string name;
+    public string desc;
     public bool isWeapon;
     public Inventory inventory;
     public bool pickupAble = false;

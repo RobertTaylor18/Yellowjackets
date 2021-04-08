@@ -762,6 +762,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6272486434740692677, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
+      propertyPath: m_Text
+      value: 'Bees?
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 7271679881065474994, guid: d9a5ae78d6ddbd84c86626692e2cd9ec, type: 3}
       propertyPath: m_RootOrder
       value: 5
