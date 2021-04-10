@@ -11,8 +11,7 @@ public class Inventory : MonoBehaviour
     public GameObject[] weapons;
     public GameObject weaponEquipped;
 
-    public List<string> items = new List<string>()
-        ;
+    public List<string> items = new List<string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +23,14 @@ public class Inventory : MonoBehaviour
     void Update()
     {
        moneyText.text = money.ToString();
+
+        if (Input.GetKeyDown("t"))
+        {
+            money += 100f;
+        }if (Input.GetKeyDown("g"))
+        {
+            money -= 100f;
+        }
     }
 
     // Update is called once per frame

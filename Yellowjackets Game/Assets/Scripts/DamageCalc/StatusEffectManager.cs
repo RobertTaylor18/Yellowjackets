@@ -74,8 +74,11 @@ public class StatusEffectManager : MonoBehaviour
             {
                 bleedTickTimers[i]--;
             }
-
-            if (bleedTickTimers.Count > 3)
+            if (bleedTickTimers.Count > 10)
+            {
+                healthScript.OnDamage(30);
+            }
+            else if (bleedTickTimers.Count > 3)
             {
                 healthScript.OnDamage(10);
             }

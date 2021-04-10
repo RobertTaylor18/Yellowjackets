@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class shooting : MonoBehaviour
+public class Shooting : MonoBehaviour
 {
     public float bulletSpeed = 10;
    
@@ -16,14 +16,21 @@ public class shooting : MonoBehaviour
     public Rigidbody cloud;
     public GameObject zap;
 
+    public float AttackDamageMod=1;
+
     public float AttackSpeed;
     public float AttackSpeedBase;
     public float AttackSpeedMod = 0;
     private float elapsedTime = 0;
 
+    public float projectileSize;
+
     public Inventory inventory;
 
-
+    void Start()
+    {
+        projectileSize = 0.2f;
+    }
 
     void defaultWeapon()
     {
@@ -31,7 +38,7 @@ public class shooting : MonoBehaviour
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, transform.position, transform.rotation);
             bulletClone.velocity = transform.forward * 100;
-
+            bulletClone.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
             elapsedTime = Time.time + AttackSpeed;
         }
     }
@@ -42,7 +49,7 @@ public class shooting : MonoBehaviour
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(bullet2, transform.position, transform.rotation);
             bulletClone.velocity = transform.forward * 25;
-
+            bulletClone.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
             elapsedTime = Time.time + AttackSpeed;
         }
     }
@@ -53,7 +60,7 @@ public class shooting : MonoBehaviour
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(missile, transform.position, transform.rotation);
             bulletClone.velocity = transform.forward * 25;
-
+            bulletClone.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
             elapsedTime = Time.time + AttackSpeed;
         }
     }
@@ -64,7 +71,7 @@ public class shooting : MonoBehaviour
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(shuriken, transform.position, transform.rotation);
             bulletClone.velocity = transform.forward * 100;
-
+            bulletClone.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
             elapsedTime = Time.time + AttackSpeed;
         }
     }

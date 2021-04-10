@@ -134,7 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  boost: 20
+  speedMod: 0
+  speedCalc: 0
+  boost: 2
   warp: {fileID: 7299076607136797956}
   isInside: 0
   Ysensitivity: 3
@@ -179,6 +181,7 @@ MonoBehaviour:
   shuriken: {fileID: -5986353756995653791, guid: 5a3e5c63fa1ada0409dcb4b0e59b7b76, type: 3}
   cloud: {fileID: 0}
   zap: {fileID: 1265076794273547806, guid: ce041a0f6144b7944a0d808f13827d74, type: 3}
+  AttackDamageMod: 1
   AttackSpeed: 0
   AttackSpeedBase: 0
   AttackSpeedMod: 0

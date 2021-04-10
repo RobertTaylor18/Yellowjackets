@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class Fly : MonoBehaviour
 {
     public float speed;
+    public float speedMod;
+    public float speedCalc;
+   
     public float boost;
     public ParticleSystem warp;
     public bool isInside;
@@ -50,7 +53,7 @@ public class Fly : MonoBehaviour
         
         var em = warp.emission;
         em.rateOverTime = warpStrength;
-
+        speedCalc = speed + speedMod;
 
         if (Input.GetButton("Fire2") || isInside)
         {
@@ -58,27 +61,19 @@ public class Fly : MonoBehaviour
         }
         else
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            transform.position += transform.forward * Time.deltaTime * (speedCalc);
             if (Input.GetKey("w"))
             {
-                transform.position += transform.forward * Time.deltaTime * boost;
+                transform.position += transform.forward * Time.deltaTime * ((speedCalc) * boost);
                 warpStrength= 80;
             }
             else
             {
                 warpStrength = 0;
             }
-            /*if (Input.GetKey("space"))
-            {
-                speed = 0;
-                boost = 0;
-            }
-            else
-            {
-                speed = 20;
-                boost = 40;
-            }*/
+
             transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, 0);
+
             if (Input.GetAxis("Horizontal") != 0)
             {
                 transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("Horizontal") * Rollsensitivity);
@@ -89,7 +84,14 @@ public class Fly : MonoBehaviour
 
         GroundCheck();
             
-    
+        if (Input.GetKey("tab"))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
 
 
@@ -108,22 +110,22 @@ public class Fly : MonoBehaviour
 
     public void Hover()
     {
-        speed = 7;
+        speedCalc = (speed + speedMod)/1.3f;
 
         transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe")*Rollsensitivity);
+        warpStrength = 0;
 
-       
         if (Input.GetAxis("Horizontal") != 0)
         {
-            transform.position += transform.right * Time.deltaTime * speed * Input.GetAxis("Horizontal");
+            transform.position += transform.right * Time.deltaTime * speedCalc * Input.GetAxis("Horizontal");
         }
         if (Input.GetAxis("Vertical") != 0)
         {
-            transform.position += transform.forward * Time.deltaTime * speed * Input.GetAxis("Vertical");
+            transform.position += transform.forward * Time.deltaTime * speedCalc * Input.GetAxis("Vertical");
         }
         if (Input.GetAxis("Altitude") != 0)
         {
-            transform.position += transform.up * Time.deltaTime * speed * Input.GetAxis("Altitude");
+            transform.position += transform.up * Time.deltaTime * speedCalc * Input.GetAxis("Altitude");
         }
         
     }

@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void RefreshShop()
+    public void RefreshShop()
     {
         int i = 0;
         foreach (Transform position in positions)

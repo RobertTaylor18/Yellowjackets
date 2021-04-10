@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ProjectileDamage : MonoBehaviour
 {
+    public GameObject player;
+
     [Header("Stats")]
-    public int baseDamage;
-    public int damageMod;
-    public int damageCalc;
+    public float baseDamage;
+    public float damageMod;
+    public float damageCalc;
 
     [Header("Status Effects")]
     public bool burn;
@@ -19,6 +21,8 @@ public class ProjectileDamage : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        damageMod = player.GetComponent<Shooting>().AttackDamageMod;
         damageCalc = baseDamage * damageMod;
     }
 
