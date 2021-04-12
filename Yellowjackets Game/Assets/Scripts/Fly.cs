@@ -170,7 +170,7 @@ public class Fly : MonoBehaviour
         int layerMask = 1 << 9;
         if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
         {
-            //Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
             //Debug.Log("Did Hit");
             groundPoint = hit.point;
         }

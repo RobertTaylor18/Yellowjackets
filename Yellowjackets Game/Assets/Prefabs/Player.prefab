@@ -185,6 +185,7 @@ MonoBehaviour:
   AttackSpeed: 0
   AttackSpeedBase: 0
   AttackSpeedMod: 0
+  projectileSize: 0
   inventory: {fileID: 4497922207027231604}
 --- !u!114 &4497922207027231605
 MonoBehaviour:
@@ -253,13 +254,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4497922207458928125}
-  m_LocalRotation: {x: 0.06299887, y: 0.00029853103, z: -0.0047292067, w: 0.99800235}
-  m_LocalPosition: {x: 0.04, y: 2.85, z: -5.11}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04, y: 1.88, z: -5.34}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4497922207027231603}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7.224, y: 0, z: -0.543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &4497922207458928096
 Camera:
   m_ObjectHideFlags: 0

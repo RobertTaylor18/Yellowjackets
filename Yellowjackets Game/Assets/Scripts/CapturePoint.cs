@@ -10,6 +10,9 @@ public class CapturePoint : MonoBehaviour
     public int capStatus;
     public Material material;
     Collider[] colliders;
+
+    public GameObject turret;
+    public bool spawned = false;
     
 
     // Start is called before the first frame update
@@ -32,10 +35,15 @@ public class CapturePoint : MonoBehaviour
         if (capStatus > 0)
         {
             material.color = Color.blue;
+            spawned = false;
         }
         else if (capStatus < 0)
         {
             material.color = Color.red;
+        }
+        else if (capStatus < -1)
+        {
+            capStatus = -1;
         }
     }
 
@@ -49,6 +57,14 @@ public class CapturePoint : MonoBehaviour
         {
             capStatus--;
         }
+        
+        if (capStatus < 0 && spawned == false)
+        {
+            Instantiate(turret, transform.position, Quaternion.identity);
+            spawned = true;
+        }
+
+        
     }
     
     void OnTriggerExit(Collider other)

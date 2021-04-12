@@ -18,14 +18,15 @@ public class Homing : MonoBehaviour
         //homingMissile = transform.rigidbody;
         //Fire();
 
-        targetObj = FindClosestEnemy();
-        
+        //targetObj = FindClosestEnemy();
+        targetObj = GameObject.FindWithTag("Player");
+        target = targetObj.transform;
     }
 
     void FixedUpdate()
     {
         
-        this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 50, ForceMode.Force);
+        this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 100, ForceMode.Force);
     }
 
     void Update()

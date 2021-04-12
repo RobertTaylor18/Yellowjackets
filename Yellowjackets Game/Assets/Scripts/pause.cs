@@ -30,11 +30,15 @@ public class pause : MonoBehaviour
         {
             Time.timeScale = 0;
             paused = true;
+            pauseUI.SetActive(true);
+            inGameUI.SetActive(false);
         }
         else if (Input.GetKeyDown("escape") && paused)
         {
             Time.timeScale = 1;
             paused = false;
+            pauseUI.SetActive(false);
+            inGameUI.SetActive(true);
         }
 
         if (Input.GetKeyDown("p"))
