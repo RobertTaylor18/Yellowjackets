@@ -13,10 +13,20 @@ public class Shooting : MonoBehaviour
     public Rigidbody bullet2;
     public Rigidbody missile;
     public Rigidbody shuriken;
+    public Rigidbody cannonVolley;
+    public Rigidbody cannonBall;
+    public GameObject railgunBurst;
+    //public GameObject glow;
+    //public Material glowMat;
     public Rigidbody cloud;
     public GameObject zap;
 
     public float AttackDamageMod=1;
+    public float charge;
+
+    public float railDmg;
+    public float chargePower;
+    public Health health;
 
     public float AttackSpeed;
     public float AttackSpeedBase;
@@ -30,6 +40,8 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         projectileSize = 0.2f;
+        //glow = GameObject.FindWithTag("Glow");
+        //glowMat = glow.GetComponent<Renderer>().material;
     }
 
     void defaultWeapon()
@@ -75,17 +87,68 @@ public class Shooting : MonoBehaviour
             elapsedTime = Time.time + AttackSpeed;
         }
     }
+    
+    void pirate()
+    {
+        if (charge >= 0.5f && charge < 1.5f)
+        {
+            Rigidbody LeftVolley = (Rigidbody)Instantiate(cannonVolley, transform.position, transform.rotation);
+            LeftVolley.velocity = transform.right * -70;
+            LeftVolley.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
+
+            Rigidbody RightVolley = (Rigidbody)Instantiate(cannonVolley, transform.position, transform.rotation);
+            RightVolley.velocity = transform.right * 70;
+            RightVolley.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
+        }
+        else if (charge >= 1.5)
+        {
+            Rigidbody bulletClone = (Rigidbody)Instantiate(cannonBall, transform.position, transform.rotation);
+            bulletClone.velocity = transform.forward * 30;
+            bulletClone.transform.localScale = new Vector3(projectileSize*5, projectileSize*5, projectileSize*5);
+        }
+    }
+    
+    void railgun()
+    {
+        
+        if (charge >= 0.5f)
+        {
+            
+            
+            Instantiate(railgunBurst, transform.position, transform.rotation);
+            RaycastHit hit;
+            int layerMask = 1 << 8;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
+            {
+                
+                if(hit.collider.GetComponent<Health>() != null)
+                {
+                    health = hit.collider.GetComponent<Health>();
+                    railDmg = Mathf.Round(Mathf.Abs(hit.distance*charge));
+                    if (charge >= 2.5 ) 
+                    {
+                        railDmg = 50 + Mathf.Round(Mathf.Abs(hit.distance * charge)* AttackDamageMod);
+                    }
+
+                    health.OnDamage(railDmg);
+                }
+
+                
+            }
+        }
+    }
 
 
     void Update()
     {
         AttackSpeed = AttackSpeedBase / (1 + (AttackSpeedMod / 100));
-
-
-
+        
+        
         if (Input.GetButton("Fire1"))
         {
-            if(inventory.weapon == "default")
+            charge += Time.deltaTime * (1/AttackSpeed);
+            
+            if (inventory.weapon == "default")
             {
                 AttackSpeedBase = .5f;
                 defaultWeapon();
@@ -105,7 +168,30 @@ public class Shooting : MonoBehaviour
                 AttackSpeedBase = .4f;
                 shurikens();
             }
+            else
+            {
+                AttackSpeedBase = 1f;
+            }
+        }
 
+        /*if (inventory.weapon == "railgun")
+        {
+            glowMat.SetFloat("Power", charge*0.2f);
+        }*/
+
+        if (!Input.GetButton("Fire1") && charge != 0)
+        {
+            if (inventory.weapon == "pirate")
+            {
+                pirate();
+            }
+            if (inventory.weapon == "railgun")
+            {
+                railgun(); 
+                //glowMat.SetFloat("Power", 0f);
+            }
+
+            charge = 0;
         }
         
 

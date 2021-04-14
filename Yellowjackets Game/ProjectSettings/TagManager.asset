@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Selectable
   - HealthBar
+  - Glow
   layers:
   - Default
   - TransparentFX

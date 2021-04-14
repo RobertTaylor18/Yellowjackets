@@ -25,6 +25,7 @@ public class Fly : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         Debug.Log("Fly script added to: " + gameObject.name);
         Cursor.lockState = CursorLockMode.Locked;
 
