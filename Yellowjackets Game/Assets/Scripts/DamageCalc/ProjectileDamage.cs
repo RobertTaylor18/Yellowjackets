@@ -41,7 +41,7 @@ public class ProjectileDamage : MonoBehaviour
         }
         else if (other.gameObject.tag == "Player" && isEnemy)
         {
-            other.gameObject.GetComponent<Health>().health -= damageCalc;
+            other.gameObject.GetComponent<PlayerHealth>().health -= damageCalc;
             Instantiate(particle, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

@@ -67,9 +67,9 @@ GameObject:
   - component: {fileID: 8122108528850392990}
   - component: {fileID: 3237880836115216987}
   - component: {fileID: 7637923166667673761}
-  - component: {fileID: 4924155626237039680}
+  - component: {fileID: -1626344782949762385}
   m_Layer: 0
-  m_Name: missile
+  m_Name: Missile
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4924155626237039680
+--- !u!114 &-1626344782949762385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,8 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: missile
-  desc: Homing explosive
+  desc: Homing Stinger Missiles
   isWeapon: 1
   inventory: {fileID: 0}
   pickupAble: 0
-  cost: 300
+  bought: 0
+  cost: 350

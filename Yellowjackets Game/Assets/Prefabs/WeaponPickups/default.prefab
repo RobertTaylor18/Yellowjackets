@@ -67,9 +67,9 @@ GameObject:
   - component: {fileID: 1629078518142895512}
   - component: {fileID: 2293893542211204851}
   - component: {fileID: 2588897070749630859}
-  - component: {fileID: 7319153038436810887}
+  - component: {fileID: 2686106749783175837}
   m_Layer: 0
-  m_Name: default
+  m_Name: Default
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7319153038436810887
+--- !u!114 &2686106749783175837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,8 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: default
-  desc: Standard machine gun
+  desc: ' Default Machine gun'
   isWeapon: 1
   inventory: {fileID: 0}
   pickupAble: 0
-  cost: 10
+  bought: 0
+  cost: 100

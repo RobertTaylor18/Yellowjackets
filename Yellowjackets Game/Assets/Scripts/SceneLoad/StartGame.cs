@@ -10,7 +10,15 @@ public class StartGame : MonoBehaviour
 
     public void LoadScene() 
     {
+        
         Instantiate(pause, transform.position, transform.rotation);
+        StartCoroutine(Spawn());
+        
+    }
+
+    public IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(1);
         Instantiate(player, transform.position, transform.rotation);
         SceneManager.LoadScene("WeaponTest");
     }

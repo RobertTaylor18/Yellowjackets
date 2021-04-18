@@ -36,12 +36,14 @@ public class Shooting : MonoBehaviour
     public float projectileSize;
 
     public Inventory inventory;
+    public Fly fly;
 
     void Start()
     {
         projectileSize = 0.2f;
         //glow = GameObject.FindWithTag("Glow");
         //glowMat = glow.GetComponent<Renderer>().material;
+        fly = GetComponent<Fly>();
     }
 
     void defaultWeapon()
@@ -144,7 +146,7 @@ public class Shooting : MonoBehaviour
         AttackSpeed = AttackSpeedBase / (1 + (AttackSpeedMod / 100));
         
         
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && fly.tab == false)
         {
             charge += Time.deltaTime * (1/AttackSpeed);
             

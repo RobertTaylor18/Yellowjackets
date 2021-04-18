@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1343581523525447020}
   - component: {fileID: 1343581523525447021}
   - component: {fileID: 1343581523525447018}
-  - component: {fileID: 1343581523525447019}
+  - component: {fileID: -2752969671839502945}
   m_Layer: 0
-  m_Name: bomb
+  m_Name: Bomb
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1343581523525447019
+--- !u!114 &-2752969671839502945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,10 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: bomb
-  desc: Good vs ground
+  desc: Good vs ground units
   isWeapon: 1
   inventory: {fileID: 0}
   pickupAble: 0
+  bought: 0
   cost: 150
 --- !u!1 &6942767735086468290
 GameObject:

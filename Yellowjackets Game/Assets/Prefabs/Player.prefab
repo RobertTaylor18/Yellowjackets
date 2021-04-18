@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4497922207027231564}
   - component: {fileID: 4497922207027231605}
   - component: {fileID: 4497922207027231604}
+  - component: {fileID: 2916764291858772710}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -148,6 +149,7 @@ MonoBehaviour:
   Rolltext: {fileID: 0}
   warpStrength: 0
   groundPoint: {x: 0, y: 0, z: 0}
+  tab: 0
 --- !u!114 &4497922207027231565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +185,6 @@ MonoBehaviour:
   cannonVolley: {fileID: 4483220675193327297, guid: 7d9ed2cf9daa3f547972700a8e7f51f9, type: 3}
   cannonBall: {fileID: 7443554654174487960, guid: 1afe5407e0aa87f49be4f21df362ac75, type: 3}
   railgunBurst: {fileID: 7551776369652398197, guid: 99a3885d7fa9417489963a52c6353248, type: 3}
-  glow: {fileID: 3803349000563491401}
-  glowMat: {fileID: 0}
   cloud: {fileID: 0}
   zap: {fileID: 1265076794273547806, guid: ce041a0f6144b7944a0d808f13827d74, type: 3}
   AttackDamageMod: 1
@@ -197,6 +197,7 @@ MonoBehaviour:
   AttackSpeedMod: 0
   projectileSize: 0
   inventory: {fileID: 4497922207027231604}
+  fly: {fileID: 0}
 --- !u!114 &4497922207027231605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +239,23 @@ MonoBehaviour:
   - {fileID: 7467726563295918839, guid: ae5b3f990e48db8488985dbab0f443b7, type: 3}
   weaponEquipped: {fileID: 0}
   items: []
+--- !u!114 &2916764291858772710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497922207027231563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f81af479bab5d47a59f326c9a096fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  lives: 3
+  inventory: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!1 &4497922207458928125
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,11 +566,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3976426287163352262, guid: 82075f37c934f7c4ea071b2bcd459064, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82075f37c934f7c4ea071b2bcd459064, type: 3}
---- !u!1 &3803349000563491401 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3976426287163352261, guid: 82075f37c934f7c4ea071b2bcd459064, type: 3}
-  m_PrefabInstance: {fileID: 281245592012269196}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3803349000563491405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3976426287163352257, guid: 82075f37c934f7c4ea071b2bcd459064, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1751998670117969182}
   - component: {fileID: 5726676163341504012}
   - component: {fileID: 8304969282831366516}
-  - component: {fileID: 3836621906779977848}
+  - component: {fileID: -2676064489917751198}
   m_Layer: 0
   m_Name: Shuriken
   m_TagString: Selectable
@@ -65,7 +65,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3836621906779977848
+--- !u!114 &-2676064489917751198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,11 +78,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: shuriken
-  desc: Rapid strikes inflict bleed
+  desc: Rapid Strikes apply bleed
   isWeapon: 1
   inventory: {fileID: 0}
   pickupAble: 0
-  cost: 0
+  bought: 0
+  cost: 150
 --- !u!1 &8622927940921275503
 GameObject:
   m_ObjectHideFlags: 0

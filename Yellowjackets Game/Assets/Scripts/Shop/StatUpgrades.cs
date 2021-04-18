@@ -26,25 +26,37 @@ public class StatUpgrades : MonoBehaviour
 
     public void AttackDamage(float mod)
     {
-        shooting.AttackDamageMod += mod;
-        stats[0].text = shooting.AttackDamageMod.ToString();
+        if (mod > 0 && shooting.AttackDamageMod < 3 || mod < 0 && shooting.AttackDamageMod > 1)
+        {
+            shooting.AttackDamageMod += mod;
+            stats[0].text = shooting.AttackDamageMod.ToString();
+        }
     }
     
     public void AttackSpeed(float mod)
     {
-        shooting.AttackSpeedMod += mod;
-        stats[1].text = shooting.AttackSpeedMod.ToString();
+        if (mod > 0 && shooting.AttackSpeedMod < 400 || mod < 0 && shooting.AttackDamageMod > 0)
+        {
+            shooting.AttackSpeedMod += mod;
+            stats[1].text = shooting.AttackSpeedMod.ToString();
+        }
     }
     
     public void MoveSpeed(float mod)
     {
-        fly.speedMod += mod;
-        stats[2].text = fly.speedMod.ToString();
+        if (mod > 0 && fly.speedMod < 10 || mod < 0 && fly.speedMod > 0)
+        {
+            fly.speedMod += mod;
+            stats[2].text = fly.speedMod.ToString();
+        }
     }
 
     public void ProjectileSize(float mod)
     {
-        shooting.projectileSize += mod;
-        stats[3].text = shooting.projectileSize.ToString();
+        if (mod > 0 && shooting.projectileSize < 0.6f || mod < 0 && shooting.projectileSize > 0.2f)
+        {
+            shooting.projectileSize += mod;
+            stats[3].text = shooting.projectileSize.ToString();
+        }
     }
 }

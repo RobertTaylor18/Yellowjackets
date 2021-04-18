@@ -46,8 +46,8 @@ public class ShopManager : MonoBehaviour
             GameObject MyItem = allShopItems[Random.Range(0, allShopItems.Length)];
             Instantiate(MyItem, position);
             MyItem.transform.position = Vector3.zero;
-            textBoxes[i].text = "<b>"+MyItem.transform.name+"</b>\n" + MyItem.GetComponent<pickup>().desc.ToString();
-            priceBoxes[i].text = MyItem.GetComponent<pickup>().cost.ToString();
+            textBoxes[i].text = "<b>"+MyItem.transform.name+"</b>\n" + MyItem.GetComponent<Pickup>().desc.ToString();
+            priceBoxes[i].text = MyItem.GetComponent<Pickup>().cost.ToString();
             i++;
         }
     }

@@ -22,6 +22,8 @@ public class Fly : MonoBehaviour
     public float warpStrength = 0;
     public Vector3 groundPoint;
 
+    public bool tab;
+
     // Use this for initialization
     void Start()
     {
@@ -51,10 +53,20 @@ public class Fly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         var em = warp.emission;
         em.rateOverTime = warpStrength;
         speedCalc = speed + speedMod;
+
+        if (Input.GetKey("tab"))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            tab = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            tab = false;
+        }
 
         if (Input.GetButton("Fire2") || isInside)
         {
@@ -73,30 +85,27 @@ public class Fly : MonoBehaviour
                 warpStrength = 0;
             }
 
-            transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, 0);
 
-            if (Input.GetAxis("Horizontal") != 0)
+            if (!tab)
             {
-                transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("Horizontal") * Rollsensitivity);
+                transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, 0);
+
+                if (Input.GetAxis("qe") != 0)
+                {
+                    transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
+                }
             }
         }
         
         //sensitivity();
 
         GroundCheck();
-            
-        if (Input.GetKey("tab"))
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-
 
         
+
+
+
+
 
         /*float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
 
@@ -113,7 +122,10 @@ public class Fly : MonoBehaviour
     {
         speedCalc = (speed + speedMod)/1.3f;
 
-        transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe")*Rollsensitivity);
+        if (!tab)
+        {
+            transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
+        }
         warpStrength = 0;
 
         if (Input.GetAxis("Horizontal") != 0)

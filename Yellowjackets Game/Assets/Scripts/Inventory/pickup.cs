@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pickup : MonoBehaviour
+public class Pickup : MonoBehaviour
 {
     public string name;
     public string desc;
     public bool isWeapon;
     public Inventory inventory;
     public bool pickupAble = false;
+    public bool bought = false;
     public float cost;
 
     void Start()
@@ -19,15 +20,25 @@ public class pickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && pickupAble && inventory.money > cost)
+        if (bought)
         {
-            if (isWeapon)
+            cost = 0;
+        }
+
+        if (other.gameObject.tag == "Player" && pickupAble)
+        {
+            if (isWeapon && bought)
+            {
+                inventory.dropWeapon();
+                inventory.weapon = name;
+            }
+            else if (isWeapon && !bought && inventory.money >= cost)
             {
                 inventory.money -= cost;
                 inventory.dropWeapon();
                 inventory.weapon = name;
             }
-            else
+            else if (!isWeapon && inventory.money >= cost)
             {
                 inventory.money -= cost;
                 inventory.items.Add(name);
