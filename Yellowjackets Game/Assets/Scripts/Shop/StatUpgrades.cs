@@ -8,6 +8,7 @@ public class StatUpgrades : MonoBehaviour
     public GameObject player;
     public Shooting shooting;
     public Fly fly;
+    public PlayerHealth playerHealth;
     public Text[] stats;
     
 
@@ -17,10 +18,12 @@ public class StatUpgrades : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         shooting = player.GetComponent<Shooting>();
         fly = player.GetComponent<Fly>();
+        playerHealth = player.GetComponent<PlayerHealth>();
         stats[0].text = shooting.AttackDamageMod.ToString();
         stats[1].text = shooting.AttackSpeedMod.ToString();
         stats[2].text = fly.speedMod.ToString();
         stats[3].text = shooting.projectileSize.ToString();
+        stats[4].text = playerHealth.maxhealth.ToString();
     }
 
 
@@ -35,7 +38,7 @@ public class StatUpgrades : MonoBehaviour
     
     public void AttackSpeed(float mod)
     {
-        if (mod > 0 && shooting.AttackSpeedMod < 400 || mod < 0 && shooting.AttackDamageMod > 0)
+        if (mod > 0 && shooting.AttackSpeedMod < 400 || mod < 0 && shooting.AttackSpeedMod > 0)
         {
             shooting.AttackSpeedMod += mod;
             stats[1].text = shooting.AttackSpeedMod.ToString();
@@ -57,6 +60,16 @@ public class StatUpgrades : MonoBehaviour
         {
             shooting.projectileSize += mod;
             stats[3].text = shooting.projectileSize.ToString();
+        }
+    }
+    
+    public void MaxHealth(float mod)
+    {
+        if (mod > 0 && playerHealth.maxhealth < 500 || mod < 0 && playerHealth.maxhealth > 100)
+        {
+            playerHealth.maxhealth += mod;
+            playerHealth.health = playerHealth.maxhealth;
+            stats[4].text = playerHealth.maxhealth.ToString();
         }
     }
 }

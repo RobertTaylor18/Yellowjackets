@@ -122,7 +122,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &4497922207027231566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,8 +237,12 @@ MonoBehaviour:
   - {fileID: 1343581523525447016, guid: 85fd3167f75ae6a42a34c82d90e46e13, type: 3}
   - {fileID: 4357546080250321000, guid: 30a3eef23c5f2e8479e26da39700e8fb, type: 3}
   - {fileID: 7467726563295918839, guid: ae5b3f990e48db8488985dbab0f443b7, type: 3}
+  - {fileID: 8915999368649450278, guid: a1e287920064a1247bf5a110786e6c33, type: 3}
+  - {fileID: 5357027003482325480, guid: aa3edf9baf676aa41b116c87a0eb4566, type: 3}
   weaponEquipped: {fileID: 0}
   items: []
+  fly: {fileID: 0}
+  playerCanvas: {fileID: 0}
 --- !u!114 &2916764291858772710
 MonoBehaviour:
   m_ObjectHideFlags: 0

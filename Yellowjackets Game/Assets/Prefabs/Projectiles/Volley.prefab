@@ -470,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5494548161441522618}
   - component: {fileID: 4483220675193327297}
+  - component: {fileID: 3074547063468211753}
   m_Layer: 0
   m_Name: Volley
   m_TagString: Untagged
@@ -510,6 +511,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &3074547063468211753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269784085760343099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0969498bb0f82b245bea6161db5ca9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTime: 1.5
+  particle: {fileID: 0}
 --- !u!1 &7689822527540387314
 GameObject:
   m_ObjectHideFlags: 0

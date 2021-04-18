@@ -23,6 +23,10 @@ public class PlayerHealth : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (health > maxhealth)
+        {
+            health = maxhealth;
+        }
         if (health <= 0)
         { 
             lives--;

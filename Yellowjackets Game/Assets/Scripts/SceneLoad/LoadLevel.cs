@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class LoadLevel : MonoBehaviour
 {
     public string sceneName;
+    public GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        player.transform.position = Vector3.zero;
+    }
 
     void OnTriggerEnter(Collider other)
     {

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RandomFlyer : MonoBehaviour
 {
-    [SerializeField] float idleSpeed, turnSpeed, switchSeconds, idleRatio;
+    [SerializeField] public float idleSpeed, turnSpeed, switchSeconds, idleRatio;
     [SerializeField] Vector2 animSpeedMinMax, moveSpeedMinMax, changeAnimEveryFromTo, changeTargetEveryFromTo;
     [SerializeField] Transform homeTarget, flyingTarget;
     [SerializeField] Vector2 radiusMinMax;
