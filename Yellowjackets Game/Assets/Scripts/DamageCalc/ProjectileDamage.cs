@@ -24,6 +24,10 @@ public class ProjectileDamage : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         damageMod = player.GetComponent<Shooting>().AttackDamageMod;
         damageCalc = baseDamage * damageMod;
+        if (player.GetComponentInChildren<Wasabee>() != null)
+        {
+            burn = true;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -35,6 +39,10 @@ public class ProjectileDamage : MonoBehaviour
             if (other.GetComponent<StatusEffectManager>() != null && bleed)
             {
                 other.gameObject.GetComponent<StatusEffectManager>().ApplyBleed(4);
+            }
+            if (other.GetComponent<StatusEffectManager>() != null && burn)
+            {
+                other.gameObject.GetComponent<StatusEffectManager>().ApplyBurn(5);
             }
             Instantiate(particle, transform.position, Quaternion.identity);
             Destroy(this.gameObject);

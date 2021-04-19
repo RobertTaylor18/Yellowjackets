@@ -31,7 +31,7 @@ public class pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("escape") &&  paused == false)
+        if (Input.GetKeyDown("p") &&  paused == false)
         {
             player = GameObject.FindWithTag("Player");
             player.GetComponent<Fly>().tab = true;
@@ -41,7 +41,7 @@ public class pause : MonoBehaviour
             inGameUI.SetActive(false);
             Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown("escape") && paused)
+        else if (Input.GetKeyDown("p") && paused)
         {
             player.GetComponent<Fly>().tab = false;
             Time.timeScale = 1;
@@ -50,7 +50,7 @@ public class pause : MonoBehaviour
             inGameUI.SetActive(true);
         }
 
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("y"))
             Application.LoadLevel(Application.loadedLevel);
     }
 

@@ -11,6 +11,7 @@ public class Fly : MonoBehaviour
    
     public float boost;
     public ParticleSystem warp;
+    public ParticleSystem warpOriginal;
     public bool isInside;
     
     public float Ysensitivity;
@@ -21,6 +22,7 @@ public class Fly : MonoBehaviour
     public Vector3 groundPoint;
 
     public bool tab;
+    public GameObject playerCanvas;
 
     // Use this for initialization
     void Start()
@@ -28,10 +30,11 @@ public class Fly : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         Debug.Log("Fly script added to: " + gameObject.name);
         Cursor.lockState = CursorLockMode.Locked;
+        playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
 
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        
+
         
 
         if (sceneName == "HiveShop")
@@ -53,7 +56,7 @@ public class Fly : MonoBehaviour
         em.rateOverTime = warpStrength;
         speedCalc = speed + speedMod;
 
-        if (Input.GetKey("tab"))
+        if (Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused)
         {
             Cursor.lockState = CursorLockMode.Confined;
             tab = true;

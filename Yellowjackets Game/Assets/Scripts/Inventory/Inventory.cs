@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Inventory : MonoBehaviour
     public Text moneyText;
     public string weapon;
     public GameObject[] weapons;
-    public GameObject weaponEquipped;
+    public GameObject[] itemEquips;
     public List<string> items = new List<string>();
 
     public Fly fly;
@@ -45,6 +46,26 @@ public class Inventory : MonoBehaviour
         {
             money = 0;
         }
+
+        if (items.Contains("saxophone"))
+        {
+            itemEquips[0].SetActive(true);
+        }
+        else
+        {
+            itemEquips[0].SetActive(false);
+            
+        }
+
+
+        if (items.Contains("wasabee"))
+        {
+            itemEquips[1].SetActive(true);
+        }
+        else
+        {
+            itemEquips[1].SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -64,6 +85,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void Equip(string name)
+    {
+        
+    }
+
 
     public void OnDeath(int lives)
     {
@@ -71,6 +97,9 @@ public class Inventory : MonoBehaviour
         weapon = "default";
         items.Clear();
         fly.isInside = true;
+        fly.warpOriginal.gameObject.SetActive(true);
+        fly.warp = fly.warpOriginal;
+        
         fly.warpStrength = 0;
         if (lives > 0)
         {
