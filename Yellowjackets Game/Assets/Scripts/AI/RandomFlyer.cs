@@ -9,7 +9,11 @@ public class RandomFlyer : MonoBehaviour
 {
     [SerializeField] public float idleSpeed, turnSpeed, switchSeconds, idleRatio;
     [SerializeField] Vector2 animSpeedMinMax, moveSpeedMinMax, changeAnimEveryFromTo, changeTargetEveryFromTo;
-    [SerializeField] Transform homeTarget, flyingTarget;
+    [SerializeField] public Transform homeTarget, flyingTarget;
+    public bool chase;
+    public float distance;
+    public float aggroRange = 50;
+    public GameObject player;
     [SerializeField] Vector2 radiusMinMax;
     [SerializeField] Vector2 yMinMax;
     [SerializeField] public bool returnToBase = false;
@@ -28,6 +32,7 @@ public class RandomFlyer : MonoBehaviour
     void Start()
     {
         // Inititalize
+        player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
         turnSpeedBackup = turnSpeed;
@@ -35,8 +40,31 @@ public class RandomFlyer : MonoBehaviour
         if (delayStart < 0f) body.velocity = idleSpeed * direction;
     }
 
+    void Update()
+    {
+        distance = Vector3.Distance(player.transform.position, transform.position);
+
+        if (distance < aggroRange)
+        {
+            chase = true;
+        }
+        else
+        {
+            chase = false;
+        }
+    }
+
     void FixedUpdate()
     {
+        if (!chase)
+        {
+            flyingTarget = FindClosestPoint().transform;
+        }
+        else if (chase)
+        {
+            flyingTarget = player.transform;
+        }
+
         // Wait if start should be delayed (useful to add small differences in large flocks)
         if (delayStart > 0f)
         {
@@ -167,5 +195,25 @@ public class RandomFlyer : MonoBehaviour
             newDir = Mathf.Sin(angleXZ) * Vector3.forward + Mathf.Cos(angleXZ) * Vector3.right + Mathf.Sin(angleY) * Vector3.up;
         }
         return newDir.normalized;
+    }
+
+    public GameObject FindClosestPoint()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("capturePoint");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 }

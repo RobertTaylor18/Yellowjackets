@@ -192,7 +192,7 @@ MonoBehaviour:
   aggroRange: 40
   distance: 0
   groundDistance: 0
-  speed: 1
+  speed: 5
   velocity: 0
   angle: 0
   rotSpeed: 1

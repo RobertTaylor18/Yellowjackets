@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637540099934645596
-    m_Hash: 3435628085
+      ticks: 637543726142392121
+    m_Hash: 223755958
   m_LockFileStatus:
     m_FilePath: D:/Unity/Projects/Yellowjackets/Yellowjackets Game/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637540099949675868
+      ticks: 637543730968805066
     m_Hash: 3503345735
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

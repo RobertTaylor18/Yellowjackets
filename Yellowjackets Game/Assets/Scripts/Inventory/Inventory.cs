@@ -39,6 +39,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if(money < 0)
+        {
+            money = 0;
+        }
+    }
+
     // Update is called once per frame
     public void dropWeapon()
     {

@@ -16,9 +16,7 @@ public class Fly : MonoBehaviour
     public float Ysensitivity;
     public float Xsensitivity;
     public float Rollsensitivity;
-    public Text Ytext;
-    public Text Xtext;
-    public Text Rolltext;
+    
     public float warpStrength = 0;
     public Vector3 groundPoint;
 
@@ -34,9 +32,7 @@ public class Fly : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         
-        Ytext = GameObject.Find("Ysens").GetComponent<Text>();
-        Xtext = GameObject.Find("Xsens").GetComponent<Text>();
-        Rolltext = GameObject.Find("Rollsens").GetComponent<Text>();
+        
 
         if (sceneName == "HiveShop")
         {
@@ -97,7 +93,7 @@ public class Fly : MonoBehaviour
             }
         }
         
-        //sensitivity();
+        sensitivity();
 
         GroundCheck();
 
@@ -145,32 +141,28 @@ public class Fly : MonoBehaviour
 
     public void sensitivity()
     {
-        Ytext.text = Ysensitivity.ToString();
-        Xtext.text = Xsensitivity.ToString();
-        Rolltext.text = Rollsensitivity.ToString();
-
-        if (Input.GetKey("u"))
+        if (Input.GetKeyDown("u"))
         {
             Ysensitivity += 0.5f; 
         }
-        else if(Input.GetKey("j"))
+        else if(Input.GetKeyDown("j"))
         {
             Ysensitivity -= 0.5f;
         }
         
-        if (Input.GetKey("i"))
+        if (Input.GetKeyDown("i"))
         {
             Xsensitivity += 0.5f; 
         }
-        else if(Input.GetKey("k"))
+        else if(Input.GetKeyDown("k"))
         {
             Xsensitivity -= 0.5f;
         }
-        if (Input.GetKey("o"))
+        if (Input.GetKeyDown("o"))
         {
             Rollsensitivity += 0.5f; 
         }
-        else if(Input.GetKey("l"))
+        else if(Input.GetKeyDown("l"))
         {
             Rollsensitivity -= 0.5f;
         }

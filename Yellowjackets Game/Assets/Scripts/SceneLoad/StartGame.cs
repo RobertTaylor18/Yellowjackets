@@ -18,7 +18,7 @@ public class StartGame : MonoBehaviour
 
     public IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(player, transform.position, transform.rotation);
         SceneManager.LoadScene("WeaponTest");
     }

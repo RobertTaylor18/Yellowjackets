@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4497922207027231567}
   - component: {fileID: 4497922207027231566}
   - component: {fileID: 4497922207027231565}
-  - component: {fileID: 4497922207027231564}
+  - component: {fileID: 239906285397454842}
   - component: {fileID: 4497922207027231605}
   - component: {fileID: 4497922207027231604}
   - component: {fileID: 2916764291858772710}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 4497922207458928125}
   camera2: {fileID: 4497922208280240429}
---- !u!114 &4497922207027231564
+--- !u!114 &239906285397454842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f1b0653692469438bb21265eba6ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 25
-  bulletSpeed2: 100
+  bulletSpeed: 100
+  bulletSpeed2: 10
   bullet: {fileID: -158609835539901998, guid: c3519fa3e6bf7c544b491335410440ac, type: 3}
   bullet2: {fileID: 4568887604911623108, guid: 67b1e06b64fcbda4bae94db7e24ad0cc, type: 3}
   missile: {fileID: 1111953820434382629, guid: 3f4b941d08ba4c648a3576cf2024d6ce, type: 3}
@@ -186,7 +186,7 @@ MonoBehaviour:
   cannonBall: {fileID: 7443554654174487960, guid: 1afe5407e0aa87f49be4f21df362ac75, type: 3}
   railgunBurst: {fileID: 7551776369652398197, guid: 99a3885d7fa9417489963a52c6353248, type: 3}
   cloud: {fileID: 0}
-  zap: {fileID: 1265076794273547806, guid: ce041a0f6144b7944a0d808f13827d74, type: 3}
+  zap: {fileID: 0}
   AttackDamageMod: 1
   charge: 0
   railDmg: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   AttackSpeedBase: 0
   AttackSpeedMod: 0
   projectileSize: 0
-  inventory: {fileID: 4497922207027231604}
+  inventory: {fileID: 0}
   fly: {fileID: 0}
 --- !u!114 &4497922207027231605
 MonoBehaviour:

@@ -44,6 +44,7 @@ public class Shooting : MonoBehaviour
         //glow = GameObject.FindWithTag("Glow");
         //glowMat = glow.GetComponent<Renderer>().material;
         fly = GetComponent<Fly>();
+        inventory = GetComponent<Inventory>();
     }
 
     void defaultWeapon()
