@@ -8,10 +8,21 @@ public class StatusEffectManager : MonoBehaviour
     public List<int> burnTickTimers = new List<int>();
     public List<int> bleedTickTimers = new List<int>();
     public List<int> slowTickTimers = new List<int>();
+
+    public RandomFlyer randomFlyer;
+    public float idleSpeed;
+    public float turnSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
         healthScript = GetComponent<Health>();
+        if (gameObject.GetComponent<RandomFlyer>() != null)
+        {
+            randomFlyer = gameObject.GetComponent<RandomFlyer>();
+        }
+        idleSpeed = randomFlyer.idleSpeed;
+        turnSpeed = randomFlyer.turnSpeed;
     }
 
     public void ApplyBurn(int ticks)
@@ -99,9 +110,28 @@ public class StatusEffectManager : MonoBehaviour
             {
                 slowTickTimers[i]--;
             }
-           //do some slow things
+
+            //do some slow things
+            if (gameObject.GetComponent<RandomFlyer>() != null)
+            {
+                randomFlyer.idleSpeed = randomFlyer.idleSpeed / 2;
+                randomFlyer.turnSpeed = randomFlyer.turnSpeed / 2;
+            }
+
+
             slowTickTimers.RemoveAll(i => i == 0);
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(1.5f);
         }
+
+
+        /*infinite loop breaks game
+         while (slowTickTimers.Count == 0)
+        {
+            if (gameObject.GetComponent<RandomFlyer>() != null)
+            {
+                randomFlyer.idleSpeed = idleSpeed;
+                randomFlyer.turnSpeed = turnSpeed;
+            }
+        }*/
     }
 }

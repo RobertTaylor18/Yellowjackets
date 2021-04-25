@@ -54,10 +54,11 @@ public class Inventory : MonoBehaviour
         else
         {
             itemEquips[0].SetActive(false);
-            
+            var em = GameObject.Find("NoteWarp").GetComponent<ParticleSystem>().emission;
+            em.rateOverTime = 0;
         }
 
-
+        //expensive move to when it is added or removed from list
         if (items.Contains("wasabee"))
         {
             itemEquips[1].SetActive(true);
@@ -65,6 +66,42 @@ public class Inventory : MonoBehaviour
         else
         {
             itemEquips[1].SetActive(false);
+        }
+
+        if (items.Contains("bumblegum"))
+        {
+            itemEquips[2].SetActive(true);
+        }
+        else
+        {
+            itemEquips[2].SetActive(false);
+        }
+
+        if (items.Contains("fluxcapacitor"))
+        {
+            itemEquips[3].SetActive(true);
+        }
+        else
+        {
+            itemEquips[3].SetActive(false);
+        }
+        
+        if (items.Contains("beeserker"))
+        {
+            itemEquips[4].SetActive(true);
+        }
+        else
+        {
+            itemEquips[4].SetActive(false);
+        }
+        
+        if (items.Contains("metal bee"))
+        {
+            itemEquips[5].SetActive(true);
+        }
+        else
+        {
+            itemEquips[5].SetActive(false);
         }
     }
 
@@ -95,6 +132,7 @@ public class Inventory : MonoBehaviour
     {
         money = 0;
         weapon = "default";
+        GetComponent<PlayerHealth>().armour = 0;
         items.Clear();
         fly.isInside = true;
         fly.warpOriginal.gameObject.SetActive(true);

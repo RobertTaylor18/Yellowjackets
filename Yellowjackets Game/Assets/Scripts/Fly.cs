@@ -9,6 +9,7 @@ public class Fly : MonoBehaviour
     public float speedMod;
     public float speedCalc;
    
+    public bool isBoosting;
     public float boost;
     public ParticleSystem warp;
     public ParticleSystem warpOriginal;
@@ -76,11 +77,13 @@ public class Fly : MonoBehaviour
             transform.position += transform.forward * Time.deltaTime * (speedCalc);
             if (Input.GetKey("w"))
             {
+                isBoosting = true;
                 transform.position += transform.forward * Time.deltaTime * ((speedCalc) * boost);
                 warpStrength= 80;
             }
             else
             {
+                isBoosting = false;
                 warpStrength = 0;
             }
 

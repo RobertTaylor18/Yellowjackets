@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float health = 1000;
     public float maxhealth = 1000;
+    public float armour = 0;
     public int lives = 3;
 
     public Inventory inventory;
@@ -28,11 +29,18 @@ public class PlayerHealth : MonoBehaviour
             health = maxhealth;
         }
         if (health <= 0)
-        { 
+        {
             lives--;
             health = maxhealth;
             inventory.OnDeath(lives);
         }
+
+    }
+
+    public void OnDamage(float damage)
+    {
+        damage -= armour;
+        health -= damage;
     }
 
     void Update()
