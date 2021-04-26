@@ -16,6 +16,8 @@ public class Shooting : MonoBehaviour
     public Rigidbody cannonVolley;
     public Rigidbody cannonBall;
     public GameObject railgunBurst;
+    public Rigidbody[] spellingBurst;
+    public bool canFire = true;
     //public GameObject glow;
     //public Material glowMat;
     public Rigidbody cloud;
@@ -141,6 +143,27 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    public IEnumerator spellingBee()
+    {
+        
+        if (Time.time > elapsedTime)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Rigidbody bulletClone = (Rigidbody)Instantiate(spellingBurst[i], transform.position, transform.rotation);
+                bulletClone.velocity = transform.forward * 100;
+                bulletClone.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
+
+                yield return new WaitForSeconds(.1f);
+            }
+
+
+            elapsedTime = Time.time + AttackSpeed;
+            
+        }
+        canFire = true;
+    }
+
 
     void Update()
     {
@@ -170,6 +193,13 @@ public class Shooting : MonoBehaviour
             {
                 AttackSpeedBase = .4f;
                 shurikens();
+            }
+            else if (inventory.weapon == "spelling bee" && canFire)
+            {
+                AttackSpeedBase = 2f;
+                canFire = false;
+                StartCoroutine(spellingBee());
+                
             }
             else
             {
