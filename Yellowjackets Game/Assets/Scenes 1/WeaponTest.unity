@@ -176,6 +176,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &88038175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +707,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!1 &392624852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1177,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &465462063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,6 +1386,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &531921001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1583,6 +1595,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &575468144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,7 +2102,7 @@ Transform:
   m_LocalScale: {x: 13.912, y: 13.912, z: 13.912}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &812640835
 GameObject:
@@ -2142,6 +2157,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &812640838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,6 +2770,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &935540807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2775,6 +2796,8 @@ MonoBehaviour:
   angle: 0
   rotSpeed: 1
   aggroRange: 10
+  isSith: 0
+  lightning: {fileID: 0}
 --- !u!114 &935540808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3646,6 +3669,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &1416404028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3909,8 +3935,125 @@ Transform:
   m_LocalScale: {x: 13.912, y: 13.912, z: 13.912}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1500327012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.429155
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.689821
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8675362118290567169, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -8612904079897887464, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -8309278323410385410, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -7846032760885032710, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -6670737500053283172, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -5979028091586743910, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -5736620619527687772, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -4787672095584402972, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -4157524182732408741, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: -2383539365869505576, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: 919132149155446097, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Name
+      value: BeeAlpha
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522029131041712598, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: 3163226146608637661, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: 4327956436451829225, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: 6446592705065767160, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    - target: {fileID: 7252253283660949357, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18795b32ce9c16d48ac3a5ca2fdfb06b, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d869517064d4a04986e9d374784d50e, type: 3}
 --- !u!1 &1545082639
 GameObject:
   m_ObjectHideFlags: 0
@@ -4470,6 +4613,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!1 &1651306212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4680,7 +4826,7 @@ Transform:
   m_LocalScale: {x: 13.912, y: 13.912, z: 13.912}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1777313923
 PrefabInstance:
@@ -5008,6 +5154,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &1810552165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5412,6 +5561,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &1943385355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5860,6 +6012,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!95 &2035234394
 Animator:
   serializedVersion: 3
@@ -6069,6 +6224,8 @@ MonoBehaviour:
   angle: 0
   rotSpeed: 1
   aggroRange: 10
+  isSith: 0
+  lightning: {fileID: 0}
 --- !u!114 &2037012788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6084,6 +6241,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &2037012789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6407,6 +6567,9 @@ MonoBehaviour:
   burnTickTimers: 
   bleedTickTimers: 
   slowTickTimers: 
+  randomFlyer: {fileID: 0}
+  idleSpeed: 0
+  turnSpeed: 0
 --- !u!114 &2068005463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6592,10 +6755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b634e1860e1419348a35b6e2eb3ba124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 9009206086508905165, guid: 36095fc21f9fbde43a9849f32968672c, type: 3}
+  Enemy: {fileID: 8912545833311373257, guid: ded17adb0080dd142b75dbc520b3dd06, type: 3}
   stopSpawning: 0
-  spawnTime: 30
-  spawnDelay: 60
+  spawnTime: 0
+  spawnDelay: 10
 --- !u!135 &2094105145
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ public class AIShoot : MonoBehaviour
     public float angle;
     public float rotSpeed = 1;
     public float aggroRange = 10;
+    public bool isSith;
+    public ParticleSystem lightning;
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +47,16 @@ public class AIShoot : MonoBehaviour
 
 
 
-                Quaternion toRotation = Quaternion.LookRotation(targetDir, transform.up);
+            Quaternion toRotation = Quaternion.LookRotation(targetDir, transform.up);
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotSpeed * Time.time);
-            defaultWeapon();  
+            if (isSith)
+            {
+                Sith();
+            }
+            else
+            {
+                defaultWeapon();
+            }
         }
     }
 
@@ -61,4 +70,15 @@ public class AIShoot : MonoBehaviour
             elapsedTime = Time.time + AttackSpeed;
         }
     }
+
+    void Sith()
+    {
+        if (Time.time > elapsedTime)
+        {
+            lightning.Play();
+
+            elapsedTime = Time.time + AttackSpeed;
+        }
+    }
+
 }

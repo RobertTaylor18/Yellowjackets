@@ -18,6 +18,7 @@ public class Shooting : MonoBehaviour
     public GameObject railgunBurst;
     public Rigidbody[] spellingBurst;
     public bool canFire = true;
+    public GameObject swordObj;
     //public GameObject glow;
     //public Material glowMat;
     public Rigidbody cloud;
@@ -164,6 +165,18 @@ public class Shooting : MonoBehaviour
         canFire = true;
     }
 
+    void sword()
+    {
+        if (Time.time > elapsedTime)
+        {
+            //swordObj.GetComponent<Animator>().animation("Swordswing").wrapMode = WrapMode.Once;
+            
+            swordObj.GetComponent<Animator>().Play("Base Layer.Swordswing", 0, 0);
+
+            elapsedTime = Time.time + AttackSpeed;
+        }
+    }
+
 
     void Update()
     {
@@ -199,7 +212,11 @@ public class Shooting : MonoBehaviour
                 AttackSpeedBase = 2f;
                 canFire = false;
                 StartCoroutine(spellingBee());
-                
+            }
+            else if (inventory.weapon == "sword")
+            {
+                AttackSpeedBase = .75f;
+                sword();
             }
             else
             {

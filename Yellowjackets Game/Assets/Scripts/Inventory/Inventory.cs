@@ -103,6 +103,11 @@ public class Inventory : MonoBehaviour
         {
             itemEquips[5].SetActive(false);
         }
+
+        if (Input.GetKey("l"))
+        {
+            weapon = "sword";
+        }
     }
 
     // Update is called once per frame
