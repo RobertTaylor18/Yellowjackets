@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
     public string weapon;
     public GameObject[] weapons;
     public GameObject[] itemEquips;
+    public GameObject swordObj;
     public List<string> items = new List<string>();
 
     public Fly fly;
@@ -129,21 +130,27 @@ public class Inventory : MonoBehaviour
 
     public void Equip(string name)
     {
-        
+        if (name == "sword")
+        {
+            swordObj.SetActive(true);
+        }
     }
 
 
     public void OnDeath(int lives)
     {
+        //Clearing player state on death and prepping for teleport to hive
+        //Some edge cases created by items are also accounted for
         money = 0;
         weapon = "default";
         GetComponent<PlayerHealth>().armour = 0;
+        swordObj.SetActive(false);
         items.Clear();
         fly.isInside = true;
         fly.warpOriginal.gameObject.SetActive(true);
         fly.warp = fly.warpOriginal;
-        
         fly.warpStrength = 0;
+
         if (lives > 0)
         {
             SceneManager.LoadScene("HiveShop");

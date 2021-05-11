@@ -25,6 +25,7 @@ public class Pickup : MonoBehaviour
             cost = 0;
         }
 
+        //Convert this to use Equip function
         if (other.gameObject.tag == "Player" && pickupAble)
         {
             if (isWeapon && bought)
@@ -44,7 +45,13 @@ public class Pickup : MonoBehaviour
                 inventory.items.Add(name);
             }
 
-
+            if (name == "sword"){
+                inventory.Equip("sword");
+            }
+            else
+            {
+                inventory.swordObj.SetActive(false);
+            }
             Destroy(this.gameObject);
         }
     }
