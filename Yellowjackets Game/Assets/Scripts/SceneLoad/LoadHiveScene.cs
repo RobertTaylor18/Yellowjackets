@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LoadHiveScene : MonoBehaviour
 {
+    
+
+   void Start()
+    {
+
+    }
+
    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

@@ -25,6 +25,8 @@ public class Fly : MonoBehaviour
     public bool tab;
     public GameObject playerCanvas;
 
+    public Animator anim;
+
     // Use this for initialization
     void Start()
     {
@@ -36,7 +38,8 @@ public class Fly : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        
+        //anim = GetComponentInChildren<Animator>();
+        anim.SetInteger("playerState", 0);
 
         if (sceneName == "HiveShop")
         {
@@ -55,7 +58,7 @@ public class Fly : MonoBehaviour
     {
         var em = warp.emission;
         em.rateOverTime = warpStrength;
-        speedCalc = speed + speedMod;
+        speedCalc = (speed + speedMod)/.6f;
 
         if (Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused)
         {
@@ -80,11 +83,13 @@ public class Fly : MonoBehaviour
                 isBoosting = true;
                 transform.position += transform.forward * Time.deltaTime * ((speedCalc) * boost);
                 warpStrength= 80;
+                anim.SetInteger("playerState", 2);
             }
             else
             {
                 isBoosting = false;
                 warpStrength = 0;
+                anim.SetInteger("playerState", 0);
             }
 
 
@@ -123,6 +128,7 @@ public class Fly : MonoBehaviour
     public void Hover()
     {
         speedCalc = (speed + speedMod)/1.3f;
+        anim.SetInteger("playerState", 1);
 
         if (!tab)
         {

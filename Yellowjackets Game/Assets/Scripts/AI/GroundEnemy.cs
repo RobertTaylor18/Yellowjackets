@@ -21,6 +21,8 @@ public class GroundEnemy : MonoBehaviour
     public Rigidbody projectile;
     private float elapsedTime = 0;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +49,7 @@ public class GroundEnemy : MonoBehaviour
 
         if (groundDistance > aggroRange && isTurret == false)
         {
-            Chase();  
+            Chase();
         } 
         else if (groundDistance < aggroRange && isTurret == false)
         {
