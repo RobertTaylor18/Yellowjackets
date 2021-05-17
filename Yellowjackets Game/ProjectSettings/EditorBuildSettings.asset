@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes 1/FlyingDemo.unity
-    guid: 70140ec6fb430a942acf5ac9f68af682
+    path: Assets/Scenes 1/Menu.unity
+    guid: 7e8776a8e83d4384d90a630eebaa993b
+  - enabled: 1
+    path: Assets/Scenes 1/WeaponTest.unity
+    guid: 372706f49efece0499a909ea6140b027
+  - enabled: 1
+    path: Assets/Scenes 1/HiveShop.unity
+    guid: 6e676e035186da84b8b338a7740284e7
   m_configObjects: {}
