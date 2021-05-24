@@ -55,6 +55,7 @@ public class GroundEnemy : MonoBehaviour
         {
             Shoot();
         }
+       
         
         if (distance < aggroRange && isTurret)
         {
@@ -68,12 +69,21 @@ public class GroundEnemy : MonoBehaviour
         //transform.LookAt(fly.groundPoint);
         // rb.velocity = fly.groundPoint - transform.position* speed;
         transform.position = Vector3.MoveTowards(transform.position, fly.groundPoint, speed*Time.deltaTime);
+        if (anim != null)
+        {
+            anim.SetInteger("state", 1);
+        }
     }
 
     void Shoot()
     {
+        if (anim != null)
+        {
+            anim.SetInteger("state", 2);
+        }
         if (Time.time > elapsedTime)
         {
+            
             Rigidbody bulletClone = (Rigidbody)Instantiate(projectile, transform.position, transform.rotation);
             if (isTurret)
             {
@@ -86,6 +96,7 @@ public class GroundEnemy : MonoBehaviour
                 elapsedTime = Time.time + 1;
             }
         }
+        
     }
 
 
