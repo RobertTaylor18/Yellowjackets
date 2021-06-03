@@ -234,6 +234,10 @@ MonoBehaviour:
   capRadius: 10
   capStatus: 0
   material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: be65a3987a706e74cb73cb2dfd4bae99, type: 2}
+  - {fileID: 2100000, guid: f79c161982911b64ea8ad3f99149aaa0, type: 2}
+  - {fileID: 2100000, guid: 98528e3c5dd2d3944a073272f52a8096, type: 2}
   turret: {fileID: 0}
   spawned: 0
 --- !u!114 &2083295428513741142

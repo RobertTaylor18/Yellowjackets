@@ -11,21 +11,24 @@ public class pause : MonoBehaviour
     public GameObject inGameUI;
     public GameObject pauseUI;
     public GameObject player;
+    public AudioListener audioListener;
 
     public Text Ytext;
     public Text Xtext;
     public Text Rolltext;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-
+        audioListener = player.GetComponentInChildren<AudioListener>();
         /*if (GameObject.Find("Player") == null)
         {
             Instantiate(player, transform.position, transform.rotation);
         }*/
-        
+
     }
 
     // Update is called once per frame
@@ -62,5 +65,17 @@ public class pause : MonoBehaviour
         Ytext.text = player.GetComponent<Fly>().Ysensitivity.ToString();
         Xtext.text = player.GetComponent<Fly>().Xsensitivity.ToString();
         Rolltext.text = player.GetComponent<Fly>().Rollsensitivity.ToString();
+    }
+
+    public void quitToMenu()
+    {
+        Destroy(player);
+        SceneManager.LoadScene("Menu");
+        Destroy(this.gameObject);
+    }
+
+    public void volume(float value)
+    {
+        AudioListener.volume = value;
     }
 }

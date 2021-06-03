@@ -22,4 +22,9 @@ public class StartGame : MonoBehaviour
         Instantiate(player, transform.position, transform.rotation);
         SceneManager.LoadScene("WeaponTest");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

@@ -7,6 +7,9 @@ public class AIManager : MonoBehaviour
     public int enemyCount = 0;
     public Spawner[] spawners;
 
+    public int pointsCapped = 0;
+    public GameObject llamaBoss;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,11 @@ public class AIManager : MonoBehaviour
             {
                 spawner.stopSpawning = true;
             }
+        }
+
+        if (pointsCapped > 3)
+        {
+            llamaBoss.SetActive(true);
         }
     }
 }

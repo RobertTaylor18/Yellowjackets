@@ -32,6 +32,7 @@ ScriptsOnlyBuild:
     - StatUpgrades
     - StatusEffectManager
     - Wasabee
+    - WinGame
     - homingProjectile
     - lifetime
     - lookBehind
@@ -100,8 +101,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.Mask
     - UnityEngine.UI.Outline
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
@@ -128,6 +131,10 @@ ScriptsOnlyBuild:
     - Class: 65
       Script: {instanceID: 0}
     - Class: 74
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -224,6 +231,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -254,6 +267,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 1796}
     - Class: 114
       Script: {instanceID: 2068}
+    - Class: 114
+      Script: {instanceID: 2216}
     - Class: 114
       Script: {instanceID: 2222}
     - Class: 114
@@ -294,6 +309,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4018}
     - Class: 114
       Script: {instanceID: 4140}
+    - Class: 114
+      Script: {instanceID: 4716}
     - Class: 114
       Script: {instanceID: 4726}
     - Class: 114
@@ -394,6 +411,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 225
       Script: {instanceID: 0}
+    - Class: 328
+      Script: {instanceID: 0}
+    - Class: 329
+      Script: {instanceID: 0}
     - Class: 73398921
       Script: {instanceID: 0}
     - Class: 2058629509
@@ -431,7 +452,9 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -517,6 +540,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7104}
     - Class: 114
       Script: {instanceID: 7274}
+    - Class: 114
+      Script: {instanceID: 125234}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -878,7 +903,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 78bd8ecc6b798e4ec172f8f5a8587a27
+      Hash: 71b795c1403d9414281ce9043f49789f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CapturePoint
@@ -1316,7 +1341,7 @@ ScriptsOnlyBuild:
     className: ColorCurves
   - hash:
       serializedVersion: 2
-      Hash: b169cce24969bdf1620b95b0239ac4b7
+      Hash: 5e289c94628ccb3ccc29c9c6a665fe5d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AIManager
@@ -1514,7 +1539,7 @@ ScriptsOnlyBuild:
     className: VFXMultiplePositionBinder
   - hash:
       serializedVersion: 2
-      Hash: 370cd658c354315106c61553c1ee04b5
+      Hash: 06f9f03d7797f3750f1009adbf6a5ca6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: pause
@@ -1806,9 +1831,15 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualEffectGraph.Runtime.dll
     namespaceName: UnityEngine.VFX.Utility
     className: VFXRaycastBinder
+  - hash:
+      serializedVersion: 2
+      Hash: eadff5920e10324bedde08c18194ee7d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WinGame
   platform: 20
   scenePathNames:
   - Assets/Scenes 1/Menu.unity
   - Assets/Scenes 1/WeaponTest.unity
   - Assets/Scenes 1/HiveShop.unity
-  playerPath: D:/Unity/Builds/YellowJacketsFootage
+  playerPath: D:/Unity/Builds/YellowJacketsDemoWeb
