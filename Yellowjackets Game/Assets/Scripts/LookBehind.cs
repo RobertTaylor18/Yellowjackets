@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lookBehind : MonoBehaviour
+public class LookBehind : MonoBehaviour
 {
 
     public GameObject camera;

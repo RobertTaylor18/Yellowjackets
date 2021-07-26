@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class shootingDebugTest : MonoBehaviour
+public class ShootingDebugTest : MonoBehaviour
 {
     public float bulletSpeed = 10;
    

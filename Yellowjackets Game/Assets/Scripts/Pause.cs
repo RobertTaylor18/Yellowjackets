@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class pause : MonoBehaviour
+public class Pause : MonoBehaviour
 {
     public bool paused = false;
 

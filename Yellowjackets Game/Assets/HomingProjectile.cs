@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class homingProjectile : MonoBehaviour
+public class HomingProjectile : MonoBehaviour
 {
 
     public Transform target;

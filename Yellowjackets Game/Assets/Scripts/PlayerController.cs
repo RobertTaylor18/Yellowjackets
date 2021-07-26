@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateCursorControls() {
-        isCursorFree = Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused;
+        isCursorFree = Input.GetKey("tab") || playerCanvas.GetComponent<Pause>().paused;
         Cursor.lockState = isCursorFree ? CursorLockMode.Confined : CursorLockMode.Locked;
     }
 
