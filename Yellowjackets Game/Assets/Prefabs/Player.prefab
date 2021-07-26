@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  fly: {fileID: 0}
+  playerController: {fileID: 0}
   speed: 0
   fluxDamageMod: 0
 --- !u!1 &4110645777338090808
@@ -1234,23 +1234,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4497922207027231563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8dded00e1a893648ac9a0a2b79619b0, type: 3}
+  m_Script: {fileID: 11500000, guid: be12ba7645dd24a4bb313caa3224d2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  speedMod: 0
+  Ysensitivity: 3
+  Xsensitivity: 1.5
+  Rollsensitivity: 3
+  isCursorFree: 0
+  speedBase: 5
+  speedModifier: 0
   speedCalc: 0
+  isInside: 0
   isBoosting: 0
   boost: 2
   warp: {fileID: 7299076607136797956}
   warpOriginal: {fileID: 7299076607136797956}
-  isInside: 0
-  Ysensitivity: 3
-  Xsensitivity: 1.5
-  Rollsensitivity: 3
   warpStrength: 0
   groundPoint: {x: 0, y: 0, z: 0}
-  tab: 0
   playerCanvas: {fileID: 0}
   anim: {fileID: 6681008799617500040}
 --- !u!114 &4497922207027231565
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   AttackSpeedMod: 0
   projectileSize: 0
   inventory: {fileID: 0}
-  fly: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &4497922207027231605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,7 +1360,7 @@ MonoBehaviour:
   - {fileID: 4110645777338090808}
   swordObj: {fileID: 861858958813604881}
   items: []
-  fly: {fileID: 0}
+  playerController: {fileID: 0}
   playerCanvas: {fileID: 0}
 --- !u!114 &2916764291858772710
 MonoBehaviour:
