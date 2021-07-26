@@ -39,14 +39,14 @@ public class Shooting : MonoBehaviour
     public float projectileSize;
 
     public Inventory inventory;
-    public Fly fly;
+    public PlayerController playerController;
 
     void Start()
     {
         projectileSize = 0.2f;
         //glow = GameObject.FindWithTag("Glow");
         //glowMat = glow.GetComponent<Renderer>().material;
-        fly = GetComponent<Fly>();
+        playerController = GetComponent<PlayerController>();
         inventory = GetComponent<Inventory>();
     }
 
@@ -183,7 +183,7 @@ public class Shooting : MonoBehaviour
         AttackSpeed = AttackSpeedBase / (1 + (AttackSpeedMod / 100));
         
         
-        if (Input.GetButton("Fire1") && fly.isCursorFree == false)
+        if (Input.GetButton("Fire1") && playerController.isCursorFree == false)
         {
             charge += Time.deltaTime * (1/AttackSpeed);
             

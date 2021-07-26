@@ -16,8 +16,8 @@ public class LoadHiveScene : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Fly>().isInside = true;
-            other.gameObject.GetComponent<Fly>().warpStrength = 0;
+            other.gameObject.GetComponent<PlayerController>().isInside = true;
+            other.gameObject.GetComponent<PlayerController>().warpStrength = 0;
             SceneManager.LoadScene("HiveShop");
             /*SceneManager.LoadScene("HiveShop", LoadSceneMode.Additive);
             SceneManager.MoveGameObjectToScene(FPSControllerr.gameObject, sceneToLoad);*/

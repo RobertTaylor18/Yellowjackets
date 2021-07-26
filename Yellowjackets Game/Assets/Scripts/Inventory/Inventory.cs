@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     public GameObject swordObj;
     public List<string> items = new List<string>();
 
-    public Fly fly;
+    public PlayerController playerController;
     public GameObject playerCanvas;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
         money = 0;
         moneyText = GameObject.Find("Lbl_Money").GetComponent<Text>();
         weapon = "default";
-        fly = GetComponent<Fly>();
+        playerController = GetComponent<PlayerController>();
         playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
     }
 
@@ -146,10 +146,10 @@ public class Inventory : MonoBehaviour
         GetComponent<PlayerHealth>().armour = 0;
         swordObj.SetActive(false);
         items.Clear();
-        fly.isInside = true;
-        fly.warpOriginal.gameObject.SetActive(true);
-        fly.warp = fly.warpOriginal;
-        fly.warpStrength = 0;
+        playerController.isInside = true;
+        playerController.warpOriginal.gameObject.SetActive(true);
+        playerController.warp = playerController.warpOriginal;
+        playerController.warpStrength = 0;
 
         if (lives > 0)
         {

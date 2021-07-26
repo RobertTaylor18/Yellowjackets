@@ -5,7 +5,7 @@ using UnityEngine;
 public class FluxCapacitor : MonoBehaviour
 {
     public GameObject player;
-    public Fly fly;
+    public PlayerController playerController;
     public float speed;
     public float fluxDamageMod;
 
@@ -13,20 +13,20 @@ public class FluxCapacitor : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        fly = player.GetComponent<Fly>();
-        speed = fly.speedCalc;
+        playerController = player.GetComponent<PlayerController>();
+        speed = playerController.speedCalc;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (fly.isBoosting)
+        if (playerController.isBoosting)
         {
-            fluxDamageMod = fly.speedCalc * fly.boost;
+            fluxDamageMod = playerController.speedCalc * playerController.boost;
         }
         else 
         {
-            fluxDamageMod = fly.speedCalc;
+            fluxDamageMod = playerController.speedCalc;
         }
     }
 }

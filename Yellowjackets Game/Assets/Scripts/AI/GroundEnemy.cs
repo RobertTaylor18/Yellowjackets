@@ -7,7 +7,7 @@ public class GroundEnemy : MonoBehaviour
     public bool isTurret;
 
     public GameObject player;
-    public Fly fly;
+    public PlayerController playerController;
 
     public float aggroRange = 10;
     public float distance;
@@ -29,14 +29,14 @@ public class GroundEnemy : MonoBehaviour
        // myTransform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindWithTag("Player");
-        fly = player.GetComponent<Fly>();
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         distance = Vector3.Distance(player.transform.position, transform.position);
-        groundDistance = Vector3.Distance(fly.groundPoint, transform.position);
+        groundDistance = Vector3.Distance(playerController.groundPoint, transform.position);
         //print(Vector3.Distance(fly.groundPoint, transform.position));
         /* if (Vector3.Distance(player.transform.position, transform.position) > aggroRange && isTurret == false)
          {
@@ -68,7 +68,7 @@ public class GroundEnemy : MonoBehaviour
         //rb.MovePosition((fly.groundPoint + Vector3.up*2) * Time.deltaTime * speed);
         //transform.LookAt(fly.groundPoint);
         // rb.velocity = fly.groundPoint - transform.position* speed;
-        transform.position = Vector3.MoveTowards(transform.position, fly.groundPoint, speed*Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, playerController.groundPoint, speed*Time.deltaTime);
         if (anim != null)
         {
             anim.SetInteger("state", 1);

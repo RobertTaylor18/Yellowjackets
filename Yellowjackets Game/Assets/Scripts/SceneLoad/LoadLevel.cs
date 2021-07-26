@@ -18,8 +18,8 @@ public class LoadLevel : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Fly>().isInside = false;
-            other.gameObject.GetComponent<Fly>().warpStrength = 0;
+            other.gameObject.GetComponent<PlayerController>().isInside = false;
+            other.gameObject.GetComponent<PlayerController>().warpStrength = 0;
             LoadScene();
         }
     }

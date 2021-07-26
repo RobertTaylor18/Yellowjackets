@@ -11,9 +11,10 @@ public class Saxophone : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         noteWarp = GameObject.Find("NoteWarp").GetComponent<ParticleSystem>();
-        
-        player.GetComponent<Fly>().boost = 2.5f;
-        player.GetComponent<Fly>().warp = noteWarp;
+
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.boost = 2.5f;
+        playerController.warp = noteWarp;
         GameObject.Find("Warp").SetActive(false);
     }
 

@@ -7,7 +7,7 @@ public class StatUpgrades : MonoBehaviour
 {
     public GameObject player;
     public Shooting shooting;
-    public Fly fly;
+    public PlayerController playerController;
     public PlayerHealth playerHealth;
     public Inventory inventory;
     public Text[] stats;
@@ -20,12 +20,12 @@ public class StatUpgrades : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         shooting = player.GetComponent<Shooting>();
-        fly = player.GetComponent<Fly>();
+        playerController = player.GetComponent<PlayerController>();
         playerHealth = player.GetComponent<PlayerHealth>();
         inventory = player.GetComponent<Inventory>();
         stats[0].text = shooting.AttackDamageMod.ToString();
         stats[1].text = shooting.AttackSpeedMod.ToString();
-        stats[2].text = fly.speedModifier.ToString();
+        stats[2].text = playerController.speedModifier.ToString();
         stats[3].text = shooting.projectileSize.ToString();
         stats[4].text = playerHealth.maxhealth.ToString();
         //costs[0].text = cost.ToString();
@@ -68,16 +68,16 @@ public class StatUpgrades : MonoBehaviour
     
     public void MoveSpeed(float mod)
     {
-        if (mod > 0 && fly.speedModifier < 10  && inventory.money >= cost)
+        if (mod > 0 && playerController.speedModifier < 10  && inventory.money >= cost)
         {
-            fly.speedModifier += mod;
-            stats[2].text = fly.speedModifier.ToString();
+            playerController.speedModifier += mod;
+            stats[2].text = playerController.speedModifier.ToString();
             inventory.money -= cost;
         }
-        else if (mod < 0 && fly.speedModifier > 0)
+        else if (mod < 0 && playerController.speedModifier > 0)
         {
-            fly.speedModifier += mod;
-            stats[2].text = fly.speedModifier.ToString();
+            playerController.speedModifier += mod;
+            stats[2].text = playerController.speedModifier.ToString();
             inventory.money += cost;
         }
     }

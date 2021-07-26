@@ -37,7 +37,7 @@ public class pause : MonoBehaviour
         if (Input.GetKeyDown("p") &&  paused == false)
         {
             player = GameObject.FindWithTag("Player");
-            player.GetComponent<Fly>().isCursorFree = true;
+            player.GetComponent<PlayerController>().isCursorFree = true;
             paused = true;
             pauseUI.SetActive(true);
             sensitivity();
@@ -46,7 +46,7 @@ public class pause : MonoBehaviour
         }
         else if (Input.GetKeyDown("p") && paused)
         {
-            player.GetComponent<Fly>().isCursorFree = false;
+            player.GetComponent<PlayerController>().isCursorFree = false;
             Time.timeScale = 1;
             paused = false;
             pauseUI.SetActive(false);
@@ -62,9 +62,9 @@ public class pause : MonoBehaviour
         Ytext = GameObject.Find("Ysens").GetComponent<Text>();
         Xtext = GameObject.Find("Xsens").GetComponent<Text>();
         Rolltext = GameObject.Find("Rollsens").GetComponent<Text>();
-        Ytext.text = player.GetComponent<Fly>().Ysensitivity.ToString();
-        Xtext.text = player.GetComponent<Fly>().Xsensitivity.ToString();
-        Rolltext.text = player.GetComponent<Fly>().Rollsensitivity.ToString();
+        Ytext.text = player.GetComponent<PlayerController>().Ysensitivity.ToString();
+        Xtext.text = player.GetComponent<PlayerController>().Xsensitivity.ToString();
+        Rolltext.text = player.GetComponent<PlayerController>().Rollsensitivity.ToString();
     }
 
     public void quitToMenu()

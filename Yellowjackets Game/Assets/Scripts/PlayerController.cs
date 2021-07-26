@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class Fly : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     // Controls
     public float Ysensitivity;
