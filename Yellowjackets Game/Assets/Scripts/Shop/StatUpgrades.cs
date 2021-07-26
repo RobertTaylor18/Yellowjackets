@@ -24,7 +24,7 @@ public class StatUpgrades : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         inventory = player.GetComponent<Inventory>();
         stats[0].text = shooting.AttackDamageMod.ToString();
-        stats[1].text = shooting.AttackSpeedMod.ToString();
+        stats[1].text = shooting.AttackSpeedModifier.ToString();
         stats[2].text = playerController.speedModifier.ToString();
         stats[3].text = shooting.projectileSize.ToString();
         stats[4].text = playerHealth.maxhealth.ToString();
@@ -52,16 +52,16 @@ public class StatUpgrades : MonoBehaviour
     
     public void AttackSpeed(float mod)
     {
-        if (mod > 0 && shooting.AttackSpeedMod < 400 && inventory.money >= cost)
+        if (mod > 0 && shooting.AttackSpeedModifier < 400 && inventory.money >= cost)
         {
-            shooting.AttackSpeedMod += mod;
-            stats[1].text = shooting.AttackSpeedMod.ToString();
+            shooting.AttackSpeedModifier += mod;
+            stats[1].text = shooting.AttackSpeedModifier.ToString();
             inventory.money -= cost;
         }
-        else if (mod < 0 && shooting.AttackSpeedMod > 0)
+        else if (mod < 0 && shooting.AttackSpeedModifier > 0)
         {
-            shooting.AttackSpeedMod += mod;
-            stats[1].text = shooting.AttackSpeedMod.ToString();
+            shooting.AttackSpeedModifier += mod;
+            stats[1].text = shooting.AttackSpeedModifier.ToString();
             inventory.money += cost;
         }
     }

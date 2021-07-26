@@ -1279,10 +1279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f1b0653692469438bb21265eba6ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 100
-  bulletSpeed2: 10
   bullet: {fileID: -158609835539901998, guid: c3519fa3e6bf7c544b491335410440ac, type: 3}
-  bullet2: {fileID: 4568887604911623108, guid: 67b1e06b64fcbda4bae94db7e24ad0cc, type: 3}
+  bomb: {fileID: 4568887604911623108, guid: 67b1e06b64fcbda4bae94db7e24ad0cc, type: 3}
   missile: {fileID: 1111953820434382629, guid: 3f4b941d08ba4c648a3576cf2024d6ce, type: 3}
   shuriken: {fileID: -5986353756995653791, guid: 5a3e5c63fa1ada0409dcb4b0e59b7b76, type: 3}
   cannonVolley: {fileID: 4483220675193327297, guid: 7d9ed2cf9daa3f547972700a8e7f51f9, type: 3}
@@ -1302,9 +1300,9 @@ MonoBehaviour:
   railDmg: 0
   chargePower: 0
   health: {fileID: 0}
-  AttackSpeed: 0
+  AttackSpeedCalc: 0
   AttackSpeedBase: 0
-  AttackSpeedMod: 0
+  AttackSpeedModifier: 0
   projectileSize: 0
   inventory: {fileID: 0}
   playerController: {fileID: 0}
