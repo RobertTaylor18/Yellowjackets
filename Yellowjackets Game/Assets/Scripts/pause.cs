@@ -37,7 +37,7 @@ public class pause : MonoBehaviour
         if (Input.GetKeyDown("p") &&  paused == false)
         {
             player = GameObject.FindWithTag("Player");
-            player.GetComponent<Fly>().tab = true;
+            player.GetComponent<Fly>().isCursorFree = true;
             paused = true;
             pauseUI.SetActive(true);
             sensitivity();
@@ -46,7 +46,7 @@ public class pause : MonoBehaviour
         }
         else if (Input.GetKeyDown("p") && paused)
         {
-            player.GetComponent<Fly>().tab = false;
+            player.GetComponent<Fly>().isCursorFree = false;
             Time.timeScale = 1;
             paused = false;
             pauseUI.SetActive(false);

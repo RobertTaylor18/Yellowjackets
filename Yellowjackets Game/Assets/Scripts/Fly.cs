@@ -3,195 +3,168 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class Fly : MonoBehaviour
-{
-    public float speed;
-    public float speedMod;
-    public float speedCalc;
-   
-    public bool isBoosting;
-    public float boost;
-    public ParticleSystem warp;
-    public ParticleSystem warpOriginal;
-    public bool isInside;
-    
+public class Fly : MonoBehaviour {
+
+    // Controls
     public float Ysensitivity;
     public float Xsensitivity;
     public float Rollsensitivity;
-    
+    public bool isCursorFree;
+
+    // Movement and navigation
+    public float speedBase;
+    public float speedModifier;
+    public float speedCalc;
+
+    public bool isInside;
+    public bool isBoosting;
+    public float boost;
+
+    // Particles
+    public ParticleSystem warp;
+    public ParticleSystem warpOriginal;
     public float warpStrength = 0;
+
+    // Other
     public Vector3 groundPoint;
-
-    public bool tab;
     public GameObject playerCanvas;
-
     public Animator anim;
 
-    // Use this for initialization
-    void Start()
-    {
-        DontDestroyOnLoad(this.gameObject);
-        Debug.Log("Fly script added to: " + gameObject.name);
-        Cursor.lockState = CursorLockMode.Locked;
+    // Initialization
+    void Start() {
+        Debug.Log("PlayerController compoment added to: " + gameObject.name);
+
+        DontDestroyOnLoad(gameObject);
+
         playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
-
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        //anim = GetComponentInChildren<Animator>();
         anim.SetInteger("playerState", 0);
 
-        if (sceneName == "HiveShop")
-        {
-            isInside = true;
-        }
-        else 
-        {
-            isInside = false;
-        }
-
-        DontDestroyOnLoad(this.gameObject);
+        Cursor.lockState = CursorLockMode.Locked;
+        isInside = SceneManager.GetActiveScene().name == "HiveShop";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        var em = warp.emission;
-        em.rateOverTime = warpStrength;
-        speedCalc = (speed + speedMod)/.6f;
+    // Update
+    void Update() {
+        // Controls
+        UpdateCursorControls();
+        UpdateSensitivityControls();
 
-        if (Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            tab = true;
+        // Movement and navigation
+        if (Input.GetButton("Fire2") || isInside) {
+            UpdateMovementHover();
+        } else {
+            UpdateMovementRegular();
         }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            tab = false;
-        }
+        UpdateGroundCheck();
 
-        if (Input.GetButton("Fire2") || isInside)
-        {
-            Hover();
-        }
-        else
-        {
-            transform.position += transform.forward * Time.deltaTime * (speedCalc);
-            if (Input.GetKey("w"))
-            {
-                isBoosting = true;
-                transform.position += transform.forward * Time.deltaTime * ((speedCalc) * boost);
-                warpStrength= 80;
-                anim.SetInteger("playerState", 2);
-            }
-            else
-            {
-                isBoosting = false;
-                warpStrength = 0;
-                anim.SetInteger("playerState", 0);
-            }
-
-
-            if (!tab)
-            {
-                transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, 0);
-
-                if (Input.GetAxis("qe") != 0)
-                {
-                    transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
-                }
-            }
-        }
-        
-        sensitivity();
-
-        GroundCheck();
-
-        
-
-
-
-
-
-        /*float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
-
-        if (terrainHeightWhereWeAre > transform.position.y)
-        {
-            transform.position = new Vector3(transform.position.x,
-            terrainHeightWhereWeAre,
-            transform.position.z);
-        }*/
+        // Effects
+        UpdateParticles();
     }
 
-
-    public void Hover()
-    {
-        speedCalc = (speed + speedMod)/1.3f;
-        anim.SetInteger("playerState", 1);
-
-        if (!tab)
-        {
-            transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
-        }
-        warpStrength = 0;
-
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            transform.position += transform.right * Time.deltaTime * speedCalc * Input.GetAxis("Horizontal");
-        }
-        if (Input.GetAxis("Vertical") != 0)
-        {
-            transform.position += transform.forward * Time.deltaTime * speedCalc * Input.GetAxis("Vertical");
-        }
-        if (Input.GetAxis("Altitude") != 0)
-        {
-            transform.position += transform.up * Time.deltaTime * speedCalc * Input.GetAxis("Altitude");
-        }
-        
+    private void UpdateCursorControls() {
+        isCursorFree = Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused;
+        Cursor.lockState = isCursorFree ? CursorLockMode.Confined : CursorLockMode.Locked;
     }
 
-    public void sensitivity()
-    {
-        if (Input.GetKeyDown("u"))
-        {
-            Ysensitivity += 0.5f; 
-        }
-        else if(Input.GetKeyDown("j"))
-        {
+    public void UpdateSensitivityControls() {
+        if (Input.GetKeyDown("u")) {
+            Ysensitivity += 0.5f;
+        } else if (Input.GetKeyDown("j")) {
             Ysensitivity -= 0.5f;
         }
-        
-        if (Input.GetKeyDown("i"))
-        {
-            Xsensitivity += 0.5f; 
-        }
-        else if(Input.GetKeyDown("k"))
-        {
+
+        if (Input.GetKeyDown("i")) {
+            Xsensitivity += 0.5f;
+        } else if (Input.GetKeyDown("k")) {
             Xsensitivity -= 0.5f;
         }
-        if (Input.GetKeyDown("o"))
-        {
-            Rollsensitivity += 0.5f; 
-        }
-        else if(Input.GetKeyDown("l"))
-        {
+
+        if (Input.GetKeyDown("o")) {
+            Rollsensitivity += 0.5f;
+        } else if (Input.GetKeyDown("l")) {
             Rollsensitivity -= 0.5f;
         }
-
     }
 
-    public void GroundCheck()
-    {
+    private void UpdateMovementRegular() {
+        CalculateSpeed(.6f);
+        transform.position += transform.forward * Time.deltaTime * speedCalc;
+
+        // Boosting
+        isBoosting = Input.GetKey("w");
+        if (isBoosting) {
+            warpStrength = 80;
+            anim.SetInteger("playerState", 2);
+            transform.position += transform.forward * Time.deltaTime * speedCalc * boost;
+        } else {
+            warpStrength = 0;
+            anim.SetInteger("playerState", 0);
+        }
+
+        // Rolling
+        if (!isCursorFree) {
+            transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, 0);
+            if (Input.GetAxis("qe") != 0) {
+                transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
+            }
+        }
+    }
+
+    private void UpdateMovementHover() {
+        CalculateSpeed(1.3f);
+        anim.SetInteger("playerState", 1);
+        warpStrength = 0;
+
+        if (!isCursorFree) {
+            transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
+        }
+
+        if (Input.GetAxis("Horizontal") != 0) {
+            transform.position += transform.right * Time.deltaTime * speedCalc * Input.GetAxis("Horizontal");
+        }
+        if (Input.GetAxis("Vertical") != 0) {
+            transform.position += transform.forward * Time.deltaTime * speedCalc * Input.GetAxis("Vertical");
+        }
+        if (Input.GetAxis("Altitude") != 0) {
+            transform.position += transform.up * Time.deltaTime * speedCalc * Input.GetAxis("Altitude");
+        }
+    }
+
+    private void UpdateGroundCheck() {
         RaycastHit hit;
-        int layerMask = 1 << 9;
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
-        {
+        bool hitMade = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            out hit,
+            Mathf.Infinity,
+            LayerMask.GetMask("floor")
+        );
+        
+        if (hitMade) {
             Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
-            //Debug.Log("Did Hit");
             groundPoint = hit.point;
         }
 
+        /*
+        float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
 
+        if (terrainHeightWhereWeAre > transform.position.y) {
+            transform.position = new Vector3(
+                transform.position.x,
+                terrainHeightWhereWeAre,
+                transform.position.z
+            );
+        }
+        */
+    }
+
+    private void UpdateParticles() {
+        ParticleSystem.EmissionModule em = warp.emission;
+        em.rateOverTime = warpStrength;
+    }
+
+    // Utility methods
+    private void CalculateSpeed(float dampener = 1f) {
+        speedCalc = (speedBase + speedModifier) / dampener;
     }
 }

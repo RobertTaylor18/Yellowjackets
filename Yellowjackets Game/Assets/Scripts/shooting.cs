@@ -183,7 +183,7 @@ public class Shooting : MonoBehaviour
         AttackSpeed = AttackSpeedBase / (1 + (AttackSpeedMod / 100));
         
         
-        if (Input.GetButton("Fire1") && fly.tab == false)
+        if (Input.GetButton("Fire1") && fly.isCursorFree == false)
         {
             charge += Time.deltaTime * (1/AttackSpeed);
             
