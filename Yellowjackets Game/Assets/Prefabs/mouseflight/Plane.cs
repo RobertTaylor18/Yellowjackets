@@ -72,6 +72,11 @@ namespace MFlight.Demo
                 rollOverride = true;
             }
 
+            if (Input.GetKeyDown("g"))
+            {
+                thrust = 0f;
+            }
+
             thrust += thrustMod * Input.GetAxis("rf");
             // Calculate the autopilot stick inputs.
             float autoYaw = 0f;
