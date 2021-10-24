@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectionManager : MonoBehaviour
-{
+public class SelectionManager : MonoBehaviour {
     //Defining assets used in highlighting interactables
     public Camera camera;
     public Material highlightMaterial;
@@ -11,18 +10,13 @@ public class SelectionManager : MonoBehaviour
     public Transform _selection;
     public string selectableTag = "Selectable";
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //if the raycast is not hitting a selectable object then change the material to it's default
-        if (_selection != null)
-        {
+        if (_selection != null) {
             var selectionRenderer = _selection.GetComponent<Renderer>();
             selectionRenderer.materials[1] = defaultMaterial;
             _selection = null;
@@ -32,18 +26,15 @@ public class SelectionManager : MonoBehaviour
         var ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        
-        if(Physics.Raycast(ray, out hit))
-        {
+
+        if (Physics.Raycast(ray, out hit)) {
             var selection = hit.transform;
 
             //If the raycast hits a selectable object change its material to the highlighted yellow
-            if (selection.CompareTag(selectableTag))
-            {
+            if (selection.CompareTag(selectableTag)) {
                 var selectionRenderer = selection.GetComponent<Renderer>();
 
-                if (selectionRenderer != null)
-                {
+                if (selectionRenderer != null) {
                     selectionRenderer.materials[1] = highlightMaterial;
                 }
                 _selection = selection;

@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CapturePoint : MonoBehaviour
-{
-
+public class CapturePoint : MonoBehaviour {
     public float capTime = 5f;
     public float capRadius = 10f;
     public int capStatus;
@@ -18,26 +16,18 @@ public class CapturePoint : MonoBehaviour
     public bool spawned = false;
 
     public AIManager aiManager;
-    
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         renderer = GetComponent<Renderer>();
         //currentMaterial = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //janky workaround
-        if (capped)
-        {
+        if (capped) {
             //currentMaterial = materials[1];
             //aiManager.pointsCapped++;
-        }
-        else
-        {
+        } else {
             //currentMaterial = materials[2];
         }
         /*colliders = Physics.OverlapSphere(transform.position, capRadius);
@@ -48,40 +38,36 @@ public class CapturePoint : MonoBehaviour
 
         }*/
 
-       /* if (capStatus > 0)
-        {
-            currentMaterial = materials[1];
-            //material.color = Color.blue;
-            spawned = false;
-        }
-        else if (capStatus < 0)
-        {
-            currentMaterial = materials[2];
-            //material.color = Color.red;
-        }
-        else if (capStatus < -1)
-        {
-            capStatus = -1;
-        }*/
+        /* if (capStatus > 0)
+         {
+             currentMaterial = materials[1];
+             //material.color = Color.blue;
+             spawned = false;
+         }
+         else if (capStatus < 0)
+         {
+             currentMaterial = materials[2];
+             //material.color = Color.red;
+         }
+         else if (capStatus < -1)
+         {
+             capStatus = -1;
+         }*/
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player") 
-        {
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") {
             capStatus++;
-            capped = true; 
+            capped = true;
             renderer.material = materials[1];
             aiManager.pointsCapped++;
-        }
-        else if(other.tag == "Enemy")
-        {
+        } else if (other.tag == "Enemy") {
             capStatus--;
             capped = false;
             renderer.material = materials[2];
             //aiManager.pointsCapped--;
         }
-        
+
         /*
         if (capStatus < 0 && spawned == false)
         {
@@ -91,18 +77,12 @@ public class CapturePoint : MonoBehaviour
                 spawned = true;
             }
         }*/
-
-        
     }
-    
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player") 
-        {
+
+    void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
             capStatus--;
-        }
-        else if (other.tag == "Enemy")
-        {
+        } else if (other.tag == "Enemy") {
             capStatus++;
         }
     }

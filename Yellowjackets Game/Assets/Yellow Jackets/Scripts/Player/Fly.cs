@@ -3,22 +3,21 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class Fly : MonoBehaviour
-{
+public class Fly : MonoBehaviour {
     public float speed;
     public float speedMod;
     public float speedCalc;
-   
+
     public bool isBoosting;
     public float boost;
     public ParticleSystem warp;
     public ParticleSystem warpOriginal;
     public bool isInside;
-    
+
     public float Ysensitivity;
     public float Xsensitivity;
     public float Rollsensitivity;
-    
+
     public float warpStrength = 0;
     public Vector3 groundPoint;
 
@@ -28,8 +27,7 @@ public class Fly : MonoBehaviour
     public Animator anim;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         DontDestroyOnLoad(this.gameObject);
         Debug.Log("Fly script added to: " + gameObject.name);
         Cursor.lockState = CursorLockMode.Locked;
@@ -41,12 +39,9 @@ public class Fly : MonoBehaviour
         //anim = GetComponentInChildren<Animator>();
         anim.SetInteger("playerState", 0);
 
-        if (sceneName == "HiveShop")
-        {
+        if (sceneName == "HiveShop") {
             isInside = true;
-        }
-        else 
-        {
+        } else {
             isInside = false;
         }
 
@@ -54,66 +49,48 @@ public class Fly : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         var em = warp.emission;
         em.rateOverTime = warpStrength;
-        speedCalc = (speed + speedMod)/.6f;
+        speedCalc = (speed + speedMod) / .6f;
 
-        if (Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused)
-        {
+        if (Input.GetKey("tab") || playerCanvas.GetComponent<pause>().paused) {
             Cursor.lockState = CursorLockMode.Confined;
             tab = true;
-        }
-        else
-        {
+        } else {
             Cursor.lockState = CursorLockMode.Locked;
             tab = false;
         }
 
-        if (Input.GetButton("Fire2") || isInside)
-        {
+        if (Input.GetButton("Fire2") || isInside) {
             Hover();
-        }
-        else
-        {
+        } else {
             transform.position += transform.forward * Time.deltaTime * (speedCalc);
             //transform.position = Vector3.SmoothDamp(transform.position)
-            if (Input.GetKey("w"))
-            {
+            if (Input.GetKey("w")) {
                 isBoosting = true;
                 transform.position += transform.forward * Time.deltaTime * ((speedCalc) * boost);
-                warpStrength= 80;
+                warpStrength = 80;
                 anim.SetInteger("playerState", 2);
-            }
-            else
-            {
+            } else {
                 isBoosting = false;
                 warpStrength = 0;
                 anim.SetInteger("playerState", 0);
             }
 
 
-            if (!tab)
-            {
+            if (!tab) {
                 transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity * Time.deltaTime, Input.GetAxis("Mouse X") * Xsensitivity * Time.deltaTime, 0);
 
-                if (Input.GetAxis("qe") != 0)
-                {
+                if (Input.GetAxis("qe") != 0) {
                     transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity * Time.deltaTime, Input.GetAxis("Mouse X") * Xsensitivity * Time.deltaTime, -Input.GetAxis("qe") * Rollsensitivity * Time.deltaTime);
                 }
             }
         }
-        
+
         sensitivity();
 
         GroundCheck();
-
-        
-
-
-
-
 
         /*float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight(transform.position);
 
@@ -125,69 +102,51 @@ public class Fly : MonoBehaviour
         }*/
     }
 
-
-    public void Hover()
-    {
-        speedCalc = (speed + speedMod)/1.3f;
+    public void Hover() {
+        speedCalc = (speed + speedMod) / 1.3f;
         anim.SetInteger("playerState", 1);
 
-        if (!tab)
-        {
+        if (!tab) {
             transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
         }
         warpStrength = 0;
 
-        if (Input.GetAxis("Horizontal") != 0)
-        {
+        if (Input.GetAxis("Horizontal") != 0) {
             transform.position += transform.right * Time.deltaTime * speedCalc * Input.GetAxis("Horizontal");
         }
-        if (Input.GetAxis("Vertical") != 0)
-        {
+        if (Input.GetAxis("Vertical") != 0) {
             transform.position += transform.forward * Time.deltaTime * speedCalc * Input.GetAxis("Vertical");
         }
-        if (Input.GetAxis("Altitude") != 0)
-        {
+        if (Input.GetAxis("Altitude") != 0) {
             transform.position += transform.up * Time.deltaTime * speedCalc * Input.GetAxis("Altitude");
         }
-        
+
     }
 
-    public void sensitivity()
-    {
-        if (Input.GetKeyDown("u"))
-        {
-            Ysensitivity += 0.5f; 
-        }
-        else if(Input.GetKeyDown("j"))
-        {
+    public void sensitivity() {
+        if (Input.GetKeyDown("u")) {
+            Ysensitivity += 0.5f;
+        } else if (Input.GetKeyDown("j")) {
             Ysensitivity -= 0.5f;
         }
-        
-        if (Input.GetKeyDown("i"))
-        {
-            Xsensitivity += 0.5f; 
-        }
-        else if(Input.GetKeyDown("k"))
-        {
+
+        if (Input.GetKeyDown("i")) {
+            Xsensitivity += 0.5f;
+        } else if (Input.GetKeyDown("k")) {
             Xsensitivity -= 0.5f;
         }
-        if (Input.GetKeyDown("o"))
-        {
-            Rollsensitivity += 0.5f; 
-        }
-        else if(Input.GetKeyDown("l"))
-        {
+        if (Input.GetKeyDown("o")) {
+            Rollsensitivity += 0.5f;
+        } else if (Input.GetKeyDown("l")) {
             Rollsensitivity -= 0.5f;
         }
 
     }
 
-    public void GroundCheck()
-    {
+    public void GroundCheck() {
         RaycastHit hit;
         int layerMask = 1 << 9;
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
-        {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask)) {
             Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
             //Debug.Log("Did Hit");
             groundPoint = hit.point;
