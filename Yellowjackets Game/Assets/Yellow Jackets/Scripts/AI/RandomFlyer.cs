@@ -5,8 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))] // Requires animator with parameter "flySpeed" catering for 0, 1 (idle, flap)
 [RequireComponent(typeof(Rigidbody))] // Requires Rigidbody to move around
 
-public class RandomFlyer : MonoBehaviour
-{
+public class RandomFlyer : MonoBehaviour {
     [SerializeField] public float idleSpeed, turnSpeed, switchSeconds, idleRatio;
     [SerializeField] Vector2 animSpeedMinMax, moveSpeedMinMax, changeAnimEveryFromTo, changeTargetEveryFromTo;
     [SerializeField] public Transform homeTarget, flyingTarget;
@@ -28,9 +27,7 @@ public class RandomFlyer : MonoBehaviour
     private Quaternion lookRotation;
     [System.NonSerialized] public float distanceFromBase, distanceFromTarget;
 
-
-    void Start()
-    {
+    void Start() {
         // Inititalize
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
@@ -40,34 +37,25 @@ public class RandomFlyer : MonoBehaviour
         if (delayStart < 0f) body.velocity = idleSpeed * direction;
     }
 
-    void Update()
-    {
+    void Update() {
         distance = Vector3.Distance(player.transform.position, transform.position);
 
-        if (distance < aggroRange)
-        {
+        if (distance < aggroRange) {
             chase = true;
-        }
-        else
-        {
+        } else {
             chase = false;
         }
     }
 
-    void FixedUpdate()
-    {
-        if (!chase)
-        {
+    void FixedUpdate() {
+        if (!chase) {
             flyingTarget = FindClosestPoint().transform;
-        }
-        else if (chase)
-        {
+        } else if (chase) {
             flyingTarget = player.transform;
         }
 
         // Wait if start should be delayed (useful to add small differences in large flocks)
-        if (delayStart > 0f)
-        {
+        if (delayStart > 0f) {
             delayStart -= Time.fixedDeltaTime;
             return;
         }
@@ -75,23 +63,18 @@ public class RandomFlyer : MonoBehaviour
         distanceFromBase = Vector3.Magnitude(randomizedBase - body.position);
         distanceFromTarget = Vector3.Magnitude(flyingTarget.position - body.position);
         // Allow drastic turns close to base to ensure target can be reached
-        if (returnToBase && distanceFromBase < 10f)
-        {
-            if (turnSpeed != 300f && body.velocity.magnitude != 0f)
-            {
+        if (returnToBase && distanceFromBase < 10f) {
+            if (turnSpeed != 300f && body.velocity.magnitude != 0f) {
                 turnSpeedBackup = turnSpeed;
                 turnSpeed = 300f;
-            }
-            else if (distanceFromBase <= 2f)
-            {
+            } else if (distanceFromBase <= 2f) {
                 body.velocity = Vector3.zero;
                 turnSpeed = turnSpeedBackup;
                 return;
             }
         }
         // Time for a new animation speed
-        if (changeAnim < 0f)
-        {
+        if (changeAnim < 0f) {
             prevAnim = currentAnim;
             currentAnim = ChangeAnim(currentAnim);
             changeAnim = Random.Range(changeAnimEveryFromTo.x, changeAnimEveryFromTo.y);
@@ -101,8 +84,7 @@ public class RandomFlyer : MonoBehaviour
             else speed = Mathf.Lerp(moveSpeedMinMax.x, moveSpeedMinMax.y, (currentAnim - animSpeedMinMax.x) / (animSpeedMinMax.y - animSpeedMinMax.x));
         }
         // Time for a new target position
-        if (changeTarget < 0f)
-        {
+        if (changeTarget < 0f) {
             rotateTarget = ChangeDirection(body.transform.position);
             if (returnToBase) changeTarget = 0.2f; else changeTarget = Random.Range(changeTargetEveryFromTo.x, changeTargetEveryFromTo.y);
             timeSinceTarget = 0f;
@@ -110,8 +92,7 @@ public class RandomFlyer : MonoBehaviour
         // Turn when approaching height limits
         // ToDo: Adjust limit and "exit direction" by object's direction and velocity, instead of the 10f and 1f - this works in my current scenario/scale
         if (body.transform.position.y < yMinMax.x + 10f ||
-            body.transform.position.y > yMinMax.y - 10f)
-        {
+            body.transform.position.y > yMinMax.y - 10f) {
             if (body.transform.position.y < yMinMax.x + 10f) rotateTarget.y = 1f; else rotateTarget.y = -1f;
         }
         //body.transform.Rotate(0f, 0f, -prevz, Space.Self); // If required to make Quaternion.LookRotation work correctly, but it seems to be fine
@@ -136,14 +117,11 @@ public class RandomFlyer : MonoBehaviour
         body.transform.Rotate(0f, 0f, prevz - temp, Space.Self);
         // Move flyer
         direction = Quaternion.Euler(transform.eulerAngles) * Vector3.forward;
-        if (returnToBase && distanceFromBase < idleSpeed)
-        {
+        if (returnToBase && distanceFromBase < idleSpeed) {
             body.velocity = Mathf.Min(idleSpeed, distanceFromBase) * direction;
-        }
-        else body.velocity = Mathf.Lerp(prevSpeed, speed, Mathf.Clamp(timeSinceAnim / switchSeconds, 0f, 1f)) * direction;
+        } else body.velocity = Mathf.Lerp(prevSpeed, speed, Mathf.Clamp(timeSinceAnim / switchSeconds, 0f, 1f)) * direction;
         // Hard-limit the height, in case the limit is breached despite of the turnaround attempt
-        if (body.transform.position.y < yMinMax.x || body.transform.position.y > yMinMax.y)
-        {
+        if (body.transform.position.y < yMinMax.x || body.transform.position.y > yMinMax.y) {
             position = body.transform.position;
             position.y = Mathf.Clamp(position.y, yMinMax.x, yMinMax.y);
             body.transform.position = position;
@@ -151,16 +129,13 @@ public class RandomFlyer : MonoBehaviour
     }
 
     // Select a new animation speed randomly
-    private float ChangeAnim(float currentAnim)
-    {
+    private float ChangeAnim(float currentAnim) {
         float newState;
         if (Random.Range(0f, 1f) < idleRatio) newState = 0f;
-        else
-        {
+        else {
             newState = Random.Range(animSpeedMinMax.x, animSpeedMinMax.y);
         }
-        if (newState != currentAnim)
-        {
+        if (newState != currentAnim) {
             animator.SetFloat("flySpeed", newState);
             if (newState == 0) animator.speed = 1f; else animator.speed = newState;
         }
@@ -168,25 +143,17 @@ public class RandomFlyer : MonoBehaviour
     }
 
     // Select a new direction to fly in randomly
-    private Vector3 ChangeDirection(Vector3 currentPosition)
-    {
+    private Vector3 ChangeDirection(Vector3 currentPosition) {
         Vector3 newDir;
-        if (returnToBase)
-        {
+        if (returnToBase) {
             randomizedBase = homeTarget.position;
             randomizedBase.y += Random.Range(-randomBaseOffset, randomBaseOffset);
             newDir = randomizedBase - currentPosition;
-        }
-        else if (distanceFromTarget > radiusMinMax.y)
-        {
+        } else if (distanceFromTarget > radiusMinMax.y) {
             newDir = flyingTarget.position - currentPosition;
-        }
-        else if (distanceFromTarget < radiusMinMax.x)
-        {
+        } else if (distanceFromTarget < radiusMinMax.x) {
             newDir = currentPosition - flyingTarget.position;
-        }
-        else
-        {
+        } else {
             // 360-degree freedom of choice on the horizontal plane
             float angleXZ = Random.Range(-Mathf.PI, Mathf.PI);
             // Limited max steepness of ascent/descent in the vertical direction
@@ -197,19 +164,16 @@ public class RandomFlyer : MonoBehaviour
         return newDir.normalized;
     }
 
-    public GameObject FindClosestPoint()
-    {
+    public GameObject FindClosestPoint() {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("capturePoint");
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
-        foreach (GameObject go in gos)
-        {
+        foreach (GameObject go in gos) {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
+            if (curDistance < distance) {
                 closest = go;
                 distance = curDistance;
             }

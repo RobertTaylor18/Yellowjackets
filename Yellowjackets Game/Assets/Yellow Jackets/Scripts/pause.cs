@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class pause : MonoBehaviour
-{
+public class pause : MonoBehaviour {
     public bool paused = false;
 
     public GameObject inGameUI;
@@ -17,25 +16,17 @@ public class pause : MonoBehaviour
     public Text Xtext;
     public Text Rolltext;
 
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         DontDestroyOnLoad(this.gameObject);
         audioListener = player.GetComponentInChildren<AudioListener>();
         /*if (GameObject.Find("Player") == null)
         {
             Instantiate(player, transform.position, transform.rotation);
         }*/
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("p") &&  paused == false)
-        {
+    void Update() {
+        if (Input.GetKeyDown("p") && paused == false) {
             player = GameObject.FindWithTag("Player");
             player.GetComponent<Fly>().tab = true;
             paused = true;
@@ -43,9 +34,7 @@ public class pause : MonoBehaviour
             sensitivity();
             inGameUI.SetActive(false);
             Time.timeScale = 0;
-        }
-        else if (Input.GetKeyDown("p") && paused)
-        {
+        } else if (Input.GetKeyDown("p") && paused) {
             player.GetComponent<Fly>().tab = false;
             Time.timeScale = 1;
             paused = false;
@@ -57,8 +46,7 @@ public class pause : MonoBehaviour
             Application.LoadLevel(Application.loadedLevel);
     }
 
-    void sensitivity()
-    {
+    void sensitivity() {
         Ytext = GameObject.Find("Ysens").GetComponent<Text>();
         Xtext = GameObject.Find("Xsens").GetComponent<Text>();
         Rolltext = GameObject.Find("Rollsens").GetComponent<Text>();
@@ -67,15 +55,13 @@ public class pause : MonoBehaviour
         Rolltext.text = player.GetComponent<Fly>().Rollsensitivity.ToString();
     }
 
-    public void quitToMenu()
-    {
+    public void quitToMenu() {
         Destroy(player);
         SceneManager.LoadScene("Menu");
         Destroy(this.gameObject);
     }
 
-    public void volume(float value)
-    {
+    public void volume(float value) {
         AudioListener.volume = value;
     }
 }

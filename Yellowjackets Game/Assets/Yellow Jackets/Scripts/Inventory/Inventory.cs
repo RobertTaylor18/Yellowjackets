@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-public class Inventory : MonoBehaviour
-{
+public class Inventory : MonoBehaviour {
     public float money;
     public Text moneyText;
     public string weapon;
@@ -18,9 +17,7 @@ public class Inventory : MonoBehaviour
     public Fly fly;
     public GameObject playerCanvas;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         money = 0;
         moneyText = GameObject.Find("Lbl_Money").GetComponent<Text>();
         weapon = "default";
@@ -28,117 +25,88 @@ public class Inventory : MonoBehaviour
         playerCanvas = GameObject.Find("PlayerCanvas(Clone)");
     }
 
-    void Update()
-    {
-       moneyText.text = money.ToString();
+    void Update() {
+        moneyText.text = money.ToString();
 
-        if (Input.GetKeyDown("t"))
-        {
+        if (Input.GetKeyDown("t")) {
             money += 100f;
-        }if (Input.GetKeyDown("g"))
-        {
+        }
+        if (Input.GetKeyDown("g")) {
             money -= 100f;
         }
     }
 
-    void FixedUpdate()
-    {
-        if(money < 0)
-        {
+    void FixedUpdate() {
+        if (money < 0) {
             money = 0;
         }
 
-        if (items.Contains("saxophone"))
-        {
+        if (items.Contains("saxophone")) {
             itemEquips[0].SetActive(true);
-        }
-        else
-        {
+        } else {
             itemEquips[0].SetActive(false);
             var em = GameObject.Find("NoteWarp").GetComponent<ParticleSystem>().emission;
             em.rateOverTime = 0;
         }
 
         //expensive move to when it is added or removed from list
-        if (items.Contains("wasabee"))
-        {
+        if (items.Contains("wasabee")) {
             itemEquips[1].SetActive(true);
-        }
-        else
-        {
+        } else {
             itemEquips[1].SetActive(false);
         }
 
-        if (items.Contains("bumblegum"))
-        {
+        if (items.Contains("bumblegum")) {
             itemEquips[2].SetActive(true);
-        }
-        else
-        {
+        } else {
             itemEquips[2].SetActive(false);
         }
 
-        if (items.Contains("fluxcapacitor"))
-        {
+        if (items.Contains("fluxcapacitor")) {
             itemEquips[3].SetActive(true);
-        }
-        else
-        {
+        } else {
             itemEquips[3].SetActive(false);
         }
-        
-        if (items.Contains("beeserker"))
-        {
+
+        if (items.Contains("beeserker")) {
             itemEquips[4].SetActive(true);
-        }
-        else
-        {
+        } else {
             itemEquips[4].SetActive(false);
         }
-        
-        if (items.Contains("metal bee"))
-        {
+
+        if (items.Contains("metal bee")) {
             itemEquips[5].SetActive(true);
-        }
-        else
-        {
+        } else {
             itemEquips[5].SetActive(false);
         }
 
-        if (Input.GetKey("l"))
-        {
+        if (Input.GetKey("l")) {
             weapon = "sword";
         }
     }
 
     // Update is called once per frame
-    public void dropWeapon()
-    {
-        foreach(GameObject WeaponDrop in weapons) {
-        if(WeaponDrop.name == weapon)
-            {
+    public void dropWeapon() {
+        foreach (GameObject WeaponDrop in weapons) {
+            if (WeaponDrop.name == weapon) {
                 Rigidbody rb = (Rigidbody)Instantiate(WeaponDrop.GetComponent<Rigidbody>(), transform.position, Quaternion.identity);
                 rb.useGravity = true;
                 rb.velocity = transform.up * 5;
                 WeaponDrop.GetComponent<Pickup>().bought = true;
 
-                
+
                 //WeaponDrop.GetComponent<Rigidbody>().velocity = transform.up*100;
             }
         }
     }
 
-    public void Equip(string name)
-    {
-        if (name == "sword")
-        {
+    public void Equip(string name) {
+        if (name == "sword") {
             swordObj.SetActive(true);
         }
     }
 
-
-    public void OnDeath(int lives)
-    {
+    public void OnDeath(int lives) {
         //Clearing player state on death and prepping for teleport to hive
         //Some edge cases created by items are also accounted for
         money = 0;
@@ -151,12 +119,9 @@ public class Inventory : MonoBehaviour
         fly.warp = fly.warpOriginal;
         fly.warpStrength = 0;
 
-        if (lives > 0)
-        {
+        if (lives > 0) {
             SceneManager.LoadScene("HiveShop");
-        }
-        else
-        {
+        } else {
             Destroy(playerCanvas);
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("Menu");
