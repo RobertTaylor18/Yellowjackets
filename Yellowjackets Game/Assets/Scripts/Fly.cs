@@ -78,6 +78,7 @@ public class Fly : MonoBehaviour
         else
         {
             transform.position += transform.forward * Time.deltaTime * (speedCalc);
+            //transform.position = Vector3.SmoothDamp(transform.position)
             if (Input.GetKey("w"))
             {
                 isBoosting = true;
@@ -95,11 +96,11 @@ public class Fly : MonoBehaviour
 
             if (!tab)
             {
-                transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, 0);
+                transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity * Time.deltaTime, Input.GetAxis("Mouse X") * Xsensitivity * Time.deltaTime, 0);
 
                 if (Input.GetAxis("qe") != 0)
                 {
-                    transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity, Input.GetAxis("Mouse X") * Xsensitivity, -Input.GetAxis("qe") * Rollsensitivity);
+                    transform.Rotate(-Input.GetAxis("Mouse Y") * Ysensitivity * Time.deltaTime, Input.GetAxis("Mouse X") * Xsensitivity * Time.deltaTime, -Input.GetAxis("qe") * Rollsensitivity * Time.deltaTime);
                 }
             }
         }
