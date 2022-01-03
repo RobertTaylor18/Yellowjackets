@@ -22,7 +22,7 @@ namespace MFlight.Demo
 
         [Header("Physics")]
         [Tooltip("Force to push plane forwards with")] public float thrust = 100f;
-        [Tooltip("Force to push plane forwards withmod")] public float thrustMod = 10f;
+        [Tooltip("Amount the thrust changes")] public float thrustMod = 10f;
         [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(90f, 25f, 45f);
         [Tooltip("Multiplier for all forces")] public float forceMult = 1000f;
 
@@ -43,6 +43,9 @@ namespace MFlight.Demo
 
         private bool rollOverride = false;
         private bool pitchOverride = false;
+        private bool yawOverride = false;
+
+        public float prevThrust = 0f;
 
         private void Awake()
         {
@@ -50,6 +53,8 @@ namespace MFlight.Demo
 
             if (controller == null)
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Update()
@@ -58,6 +63,8 @@ namespace MFlight.Demo
             // autopilot is trying to do.
             rollOverride = false;
             pitchOverride = false;
+            yawOverride = false;
+            
 
             float keyboardRoll = Input.GetAxis("Horizontal");
             if (Mathf.Abs(keyboardRoll) > .25f)
@@ -72,9 +79,25 @@ namespace MFlight.Demo
                 rollOverride = true;
             }
 
+            float keyboardYaw = Input.GetAxis("qe");
+            if (Mathf.Abs(keyboardPitch) > .25f)
+            {
+                yawOverride = true; 
+            }
+
             if (Input.GetKeyDown("g"))
             {
                 thrust = 0f;
+            }
+            
+            if (Input.GetButtonDown("Fire2"))
+            {
+                prevThrust = thrust;
+                thrust = 0f;
+            }
+            if (Input.GetButtonUp("Fire2"))
+            {
+                thrust=prevThrust;
             }
 
             thrust += thrustMod * Input.GetAxis("rf");
@@ -86,9 +109,11 @@ namespace MFlight.Demo
                 RunAutopilot(controller.MouseAimPos, out autoYaw, out autoPitch, out autoRoll);
 
             // Use either keyboard or autopilot input.
-            yaw = autoYaw;
+            //yaw = autoYaw;
+            yaw = (yawOverride) ? keyboardYaw : autoYaw;
             pitch = (pitchOverride) ? keyboardPitch : autoPitch;
             roll = (rollOverride) ? keyboardRoll : autoRoll;
+            
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)

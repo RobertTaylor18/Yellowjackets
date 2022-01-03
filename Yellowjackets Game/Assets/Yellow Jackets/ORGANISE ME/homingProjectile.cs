@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HighlightPlus;
 
 public class homingProjectile : MonoBehaviour {
     public Transform target;
+    public GameObject gameOb;
     public float force;
     public float rotationForce;
     private Rigidbody rb;
 
+    public HighlightEffect effect;
+
     void Start() {
         rb = GetComponent<Rigidbody>();
         target = FindClosestEnemy().transform;
+        effect = FindClosestEnemy().GetComponent<HighlightEffect>();
     }
 
     void FixedUpdate() {
+        //effect.Highlighted = true;
         Vector3 direction = target.position - rb.position;
         direction.Normalize();
         Vector3 rotationAmount = Vector3.Cross(transform.forward, direction);

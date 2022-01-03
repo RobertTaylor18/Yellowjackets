@@ -35,19 +35,19 @@ public class Shooting : MonoBehaviour {
     public float projectileSize;
 
     public Inventory inventory;
-    public Fly fly;
+    //public Fly fly;
 
     void Start() {
         projectileSize = 0.2f;
         //glow = GameObject.FindWithTag("Glow");
         //glowMat = glow.GetComponent<Renderer>().material;
-        fly = GetComponent<Fly>();
+        //fly = GetComponent<Fly>();
         inventory = GetComponent<Inventory>();
     }
 
     void defaultWeapon() {
         if (Time.time > elapsedTime) {
-            Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, transform.position, transform.rotation);
+            Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, transform.position + new Vector3(0,2,0), transform.rotation);
             bulletClone.velocity = transform.forward * 100;
             bulletClone.transform.localScale = new Vector3(projectileSize, projectileSize, projectileSize);
             elapsedTime = Time.time + AttackSpeed;
@@ -153,8 +153,7 @@ public class Shooting : MonoBehaviour {
     void Update() {
         AttackSpeed = AttackSpeedBase / (1 + (AttackSpeedMod / 100));
 
-
-        if (Input.GetButton("Fire1") && fly.tab == false) {
+        if (Input.GetButton("Fire1") /*&& fly.tab == false*/) {
             charge += Time.deltaTime * (1 / AttackSpeed);
 
             if (inventory.weapon == "default") {
